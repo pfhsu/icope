@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>115 年長者內在能力檢測（ICOPE）說明會場地評估表</title>
+<style>
+  :root {
+    --ink:#1c2a32; --ink-soft:#54636d; --line:#e2e7ea; --line-soft:#eef1f3;
+    --paper:#ffffff; --panel:#f6f8f9; --bg:#eceff1;
+    --teal:#13726b; --teal-deep:#0d5550; --blue:#2563a8; --amber:#b1660a;
+    --rec:#1d7a44; --rec-bg:#e9f4ee; --alt:#9a6a10; --alt-bg:#f7f0e2;
+    --no:#9aa3a8; --no-bg:#f1f3f4; --con:#a23b3b;
+    --r-北:#2563a8; --r-中:#b1660a; --r-東:#13726b; --r-南:#a23b6e;
+  }
+  * { box-sizing:border-box; }
+  html { -webkit-text-size-adjust:100%; }
+  body {
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:"PingFang TC","Noto Sans TC","Microsoft JhengHei","Segoe UI",system-ui,sans-serif;
+    font-size:15px; line-height:1.7; letter-spacing:.01em;
+  }
+  .sheet {
+    max-width:1000px; margin:28px auto; background:var(--paper);
+    box-shadow:0 1px 3px rgba(20,40,50,.08),0 12px 32px rgba(20,40,50,.10);
+    border-radius:4px; overflow:hidden;
+  }
+  .doc-head {
+    padding:34px 44px 26px; border-top:5px solid var(--teal);
+    border-bottom:1px solid var(--line);
+  }
+  .doc-org { font-size:13px; color:var(--ink-soft); letter-spacing:.04em; }
+  .doc-logos { display:flex; align-items:center; gap:16px; margin-bottom:18px; flex-wrap:wrap; }
+  .logo-box { height:48px; display:flex; align-items:center; }
+  .logo-box img { height:42px; width:auto; max-width:220px; object-fit:contain; display:block; }
+  .logo-box.logo-failed { padding:7px 13px; border:1px solid var(--line); border-radius:8px; background:var(--panel); }
+  .logo-box.logo-failed::after { content:attr(data-label); font-weight:800; font-size:14px; color:var(--teal-deep); }
+  .logo-divider { width:1px; height:30px; background:var(--line); }
+  .doc-head h1 {
+    margin:8px 0 10px; font-size:25px; line-height:1.35; font-weight:800;
+    letter-spacing:.02em; color:var(--ink);
+  }
+  .doc-meta { font-size:12.5px; color:var(--ink-soft); }
+  .block { padding:26px 44px; border-bottom:1px solid var(--line-soft); }
+  .eyebrow {
+    font-size:12px; font-weight:700; letter-spacing:.18em; color:var(--teal-deep);
+    margin:0 0 14px;
+  }
+  .need-row {
+    display:grid; grid-template-columns:150px 168px 168px 1fr; gap:6px 18px;
+    padding:11px 0; border-top:1px solid var(--line-soft); align-items:baseline;
+  }
+  .need-row:first-of-type { border-top:none; }
+  .need-region { font-weight:700; }
+  .need-fmt { color:var(--teal-deep); font-weight:600; font-size:13.5px; }
+  .need-time { color:var(--ink-soft); font-variant-numeric:tabular-nums; font-size:13.5px; }
+  .need-desc { color:var(--ink-soft); font-size:13.5px; }
+  table.summary { width:100%; border-collapse:collapse; font-size:14px; }
+  table.summary th, table.summary td {
+    text-align:left; padding:11px 12px; border-bottom:1px solid var(--line-soft);
+    vertical-align:top;
+  }
+  table.summary thead th {
+    font-size:12px; letter-spacing:.08em; color:var(--ink-soft);
+    border-bottom:1.5px solid var(--line); font-weight:700;
+  }
+  td.s-region { font-weight:700; white-space:nowrap; width:96px; }
+  td.s-rec { font-weight:700; color:var(--teal-deep); }
+  .s-reason { display:block; font-weight:400; color:var(--ink-soft); font-size:12.5px; margin-top:2px; }
+  td.s-alt { color:var(--ink-soft); }
+  .region { margin:18px 28px; padding:22px 26px 10px; border-radius:8px;
+    border-left:5px solid var(--line); }
+  .region-北 { background:#f4f8fc; border-left-color:var(--r-北); }
+  .region-中 { background:#fbf6ed; border-left-color:var(--r-中); }
+  .region-東 { background:#eef7f5; border-left-color:var(--r-東); }
+  .region-南 { background:#fbf1f6; border-left-color:var(--r-南); }
+  .region-head { display:flex; align-items:center; gap:14px; margin-bottom:18px; }
+  .region-key {
+    flex:none; width:38px; height:38px; border-radius:50%; display:grid; place-items:center;
+    color:#fff; font-weight:800; font-size:17px;
+  }
+  .region-titles h2 { margin:0; font-size:19px; font-weight:800; letter-spacing:.03em; }
+  .region-fmt { margin:1px 0 0; font-size:13px; color:var(--ink-soft); }
+  .region-北 .region-key { background:var(--r-北); }
+  .region-中 .region-key { background:var(--r-中); }
+  .region-東 .region-key { background:var(--r-東); }
+  .region-南 .region-key { background:var(--r-南); }
+  .region-北 .region-titles h2 { color:var(--r-北); }
+  .region-中 .region-titles h2 { color:var(--r-中); }
+  .region-東 .region-titles h2 { color:var(--r-東); }
+  .region-南 .region-titles h2 { color:var(--r-南); }
+  .cards { display:flex; flex-direction:column; gap:16px; }
+  .card {
+    display:grid; grid-template-columns:264px 1fr; gap:0;
+    border:1px solid var(--line); border-radius:6px; overflow:hidden; background:var(--paper);
+  }
+  .card-rec { border-left:4px solid var(--rec); }
+  .card-alt { border-left:4px solid var(--alt); }
+  .card-no  { border-left:4px solid var(--no); }
+  .photos { display:flex; flex-direction:column; gap:2px; background:var(--panel); }
+  .photo-link {
+    position:relative; display:block; flex:1; min-height:88px; width:100%;
+    background:var(--panel); overflow:hidden; padding:0; border:none; cursor:zoom-in;
+    font:inherit; color:inherit;
+  }
+  .photo { width:100%; height:100%; object-fit:cover; display:block; min-height:88px; }
+  .zoom-hint {
+    position:absolute; right:8px; bottom:8px; font-size:11px; font-weight:600;
+    color:#fff; background:rgba(20,40,50,.6); padding:2px 9px; border-radius:999px;
+    opacity:0; transition:opacity .15s ease; pointer-events:none;
+  }
+  .photo-link:hover .zoom-hint, .photo-link:focus-visible .zoom-hint { opacity:1; }
+  .photo-link:focus-visible { outline:2px solid var(--teal); outline-offset:-2px; }
+  .photo-link.photo-missing { cursor:pointer; }
+  .photo-link.photo-missing .zoom-hint { display:none; }
+  .photo-link.photo-missing::after {
+    content:"場地照片 ‧ 點此查看來源"; position:absolute; inset:0;
+    display:flex; align-items:center; justify-content:center; text-align:center;
+    font-size:12px; color:var(--ink-soft); background:repeating-linear-gradient(
+      45deg,#eef1f3,#eef1f3 10px,#e7ebed 10px,#e7ebed 20px); padding:10px;
+  }
+  .card-body { padding:16px 20px 18px; }
+  .card-head { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; }
+  .card-head h3 { margin:0; font-size:16.5px; font-weight:800; line-height:1.4; }
+  .venue-link { color:var(--ink); text-decoration:none; }
+  .venue-link:hover { color:var(--teal-deep); text-decoration:underline; text-underline-offset:3px; }
+  .venue-link .ext { font-size:12px; color:var(--ink-soft); margin-left:5px; font-weight:600; }
+  .venue-link:hover .ext { color:var(--teal); }
+  .badge {
+    flex:none; font-size:12px; font-weight:800; padding:3px 11px; border-radius:999px;
+    letter-spacing:.05em; line-height:1.6; white-space:nowrap;
+  }
+  .badge-rec { color:var(--rec); background:var(--rec-bg); }
+  .badge-alt { color:var(--alt); background:var(--alt-bg); }
+  .badge-no  { color:var(--no); background:var(--no-bg); }
+  .facts { margin:12px 0 14px; border-top:1px solid var(--line-soft); }
+  .fact {
+    display:grid; grid-template-columns:84px 1fr; gap:10px; padding:7px 0;
+    border-bottom:1px solid var(--line-soft); font-size:13.5px;
+  }
+  .fk { color:var(--ink-soft); font-weight:600; }
+  .fv { color:var(--ink); }
+  .prosconcs { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+  .pc h4 {
+    margin:0 0 6px; font-size:12.5px; letter-spacing:.06em; font-weight:700;
+    padding-bottom:4px; border-bottom:2px solid var(--line-soft);
+  }
+  .pc-pro h4 { color:var(--rec); border-color:var(--rec-bg); }
+  .pc-con h4 { color:var(--con); border-color:#f0e0e0; }
+  .pc ul { margin:0; padding-left:18px; }
+  .pc li { font-size:13.5px; margin:3px 0; color:var(--ink); }
+  .doc-foot {
+    padding:18px 44px 30px; font-size:12px; color:var(--ink-soft);
+    background:var(--panel); border-top:1px solid var(--line);
+  }
+  .doc-foot p { margin:3px 0; }
+  .contact { margin-top:10px !important; padding-top:10px; border-top:1px solid var(--line);
+    font-size:13px; color:var(--ink); }
+  .contact a { color:var(--teal-deep); font-weight:600; }
+  /* lightbox */
+  .lightbox {
+    position:fixed; inset:0; z-index:50; background:rgba(15,28,34,.86);
+    display:flex; align-items:center; justify-content:center; padding:28px;
+  }
+  .lightbox[hidden] { display:none; }
+  .lb-fig { margin:0; max-width:92vw; max-height:92vh; display:flex; flex-direction:column;
+    align-items:center; gap:12px; }
+  #lb-img { max-width:92vw; max-height:78vh; object-fit:contain; border-radius:4px;
+    box-shadow:0 12px 40px rgba(0,0,0,.4); background:#fff; }
+  .lb-cap { color:#e9eef0; font-size:13px; text-align:center; }
+  .lb-cap .lb-name { font-weight:700; display:block; margin-bottom:6px; }
+  .lb-cap a { color:#9fd6cf; text-decoration:none; margin:0 10px; font-weight:600; }
+  .lb-cap a:hover { text-decoration:underline; }
+  .lb-close {
+    position:fixed; top:18px; right:22px; width:40px; height:40px; border-radius:50%;
+    border:none; background:rgba(255,255,255,.14); color:#fff; font-size:24px; line-height:1;
+    cursor:pointer;
+  }
+  .lb-close:hover { background:rgba(255,255,255,.26); }
+  @media (prefers-reduced-motion:no-preference) {
+    .lb-fig { animation:lbin .18s ease; }
+    @keyframes lbin { from { opacity:0; transform:scale(.98); } to { opacity:1; transform:none; } }
+  }
+  @media (max-width:720px) {
+    .sheet { margin:0; border-radius:0; }
+    .doc-head, .block, .doc-foot { padding-left:20px; padding-right:20px; }
+    .region { margin:12px 14px; padding:18px 16px 8px; }
+    .need-row { grid-template-columns:1fr; gap:2px; }
+    .card { grid-template-columns:1fr; }
+    .photos { flex-direction:row; }
+    .photo-link { min-height:120px; }
+    .prosconcs { grid-template-columns:1fr; gap:10px; }
+  }
+  @media print {
+    body { background:#fff; font-size:11.5pt; }
+    .sheet { box-shadow:none; margin:0; max-width:none; border-radius:0; }
+    .doc-foot { background:#fff; }
+    .region, .card { break-inside:avoid; }
+    .doc-head { border-top-width:4px; }
+    .zoom-hint { display:none !important; }
+    .venue-link { color:inherit; text-decoration:none; }
+    .venue-link .ext { display:none; }
+    .lightbox { display:none !important; }
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <div class="doc-head">
+    <div class="doc-logos">
+      <span class="logo-box" data-label="長庚科技大學"><img src="https://lis.cgust.edu.tw/var/file/19/1019/pictures/419/part_20738_4665221_36590.jpg" alt="長庚科技大學" referrerpolicy="no-referrer" onerror="this.style.display='none';this.parentElement.classList.add('logo-failed');"></span>
+      <span class="logo-divider"></span>
+      <span class="logo-box" data-label="衛生福利部國民健康署"><img src="https://www.hpa.gov.tw/NewPageStyle/TW/images/logo/logo.png" alt="衛生福利部國民健康署" referrerpolicy="no-referrer" onerror="this.style.display='none';this.parentElement.classList.add('logo-failed');"></span>
+    </div>
+    <div class="doc-org">長庚科技大學　115 年長者內在能力檢測教育訓練計畫（分項 1）</div>
+    <h1>115 年長者內在能力檢測（ICOPE）說明會場地評估表</h1>
+    <div class="doc-meta">承辦：計畫團隊　｜　用途：場地評估簽核參考　｜　辦理期程：115 年 6–7 月（4 場次）</div>
+  </div>
+
+  <div class="block">
+    <p class="eyebrow">壹 ‧ 辦理需求</p>
+    <div class="need-row"><div class="need-region">北部場、南部場</div><div class="need-fmt">實體辦理 ‧ 含實作練習</div><div class="need-time">12:30 報到－16:00 賦歸</div><div class="need-desc">課程含 AI 衛教素材實作環節，須可容納約百人，並以利於分組操作之座位型式為佳。</div></div><div class="need-row"><div class="need-region">中部場、東部場</div><div class="need-fmt">實體＋線上同步 ‧ 無實作</div><div class="need-time">12:30 報到－14:00 賦歸</div><div class="need-desc">實體預估約百人，固定座位即可，惟須具備良好簡報與線上直播條件。</div></div>
+  </div>
+
+  <div class="block">
+    <p class="eyebrow">貳 ‧ 建議總覽</p>
+    <table class="summary">
+      <thead><tr><th>場次</th><th>建議場地</th><th>次要選項</th></tr></thead>
+      <tbody><tr><td class="s-region">北部場</td><td class="s-rec">臺大醫院國際會議廳 402AB<span class="s-reason">設備佳、捷運直達；含實作首選</span></td><td class="s-alt">臺師大演講堂（經濟取向）</td></tr><tr><td class="s-region">中部場</td><td class="s-rec">高鐵烏日站會議中心<span class="s-reason">三鐵共構、交通最佳</span></td><td class="s-alt">東海大學求真廳（最經濟）</td></tr><tr><td class="s-region">東部場</td><td class="s-rec">慈濟大學 B104 階梯教室<span class="s-reason">醫護熟悉、距站近、租金經濟</span></td><td class="s-alt">慈濟科技大學 A310（容量較大）</td></tr><tr><td class="s-region">南部場</td><td class="s-rec">長庚科技大學嘉義分部<span class="s-reason">本校自有場地、行政便利、免外租</span></td><td class="s-alt">外貿協會臺南辦事處（會議室、利於實作）／成大 4263</td></tr></tbody>
+    </table>
+  </div>
+
+  <div class="block" style="border-bottom:none; padding-bottom:6px;">
+    <p class="eyebrow">參 ‧ 各區場地評估</p>
+  </div>
+  
+    <section class="region region-北">
+      <header class="region-head">
+        <span class="region-key">北</span>
+        <div class="region-titles">
+          <h2>北部場</h2>
+          <p class="region-fmt">實體辦理 ‧ 含實作練習</p>
+        </div>
+      </header>
+      <div class="cards">
+    <article class="card card-rec" data-region="北">
+      <div class="photos"><button class="photo-link" type="button" data-full="https://www.nthcc.com.tw/Upload/202509/restaurant_2025090516241201.webp" data-name="臺大醫院國際會議廳 402AB" data-source="https://www.nthcc.com.tw/" aria-label="放大檢視 臺大醫院國際會議廳 402AB 場地照片"><img class="photo" src="https://www.nthcc.com.tw/Upload/202509/restaurant_2025090516241201.webp" alt="臺大醫院國際會議廳 402AB 場地照片" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none';this.parentElement.classList.add('photo-missing');"><span class="zoom-hint">放大檢視</span></button><button class="photo-link" type="button" data-full="https://www.nthcc.com.tw/Upload/202509/restaurant_2025090516241303.webp" data-name="臺大醫院國際會議廳 402AB" data-source="https://www.nthcc.com.tw/" aria-label="放大檢視 臺大醫院國際會議廳 402AB 場地照片"><img class="photo" src="https://www.nthcc.com.tw/Upload/202509/restaurant_2025090516241303.webp" alt="臺大醫院國際會議廳 402AB 場地照片" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none';this.parentElement.classList.add('photo-missing');"><span class="zoom-hint">放大檢視</span></button></div>
+      <div class="card-body">
+        <div class="card-head">
+          <h3><a class="venue-link" href="https://www.nthcc.com.tw/" target="_blank" rel="noopener" title="開啟場地官方網頁">臺大醫院國際會議廳 402AB<span class="ext" aria-hidden="true">↗</span></a></h3>
+          <span class="badge badge-rec">建議</span>
+        </div>
+        <div class="facts"><div class="fact"><span class="fk">座位</span><span class="fv">劇院型 204｜教室型 108｜分組型 72｜其他桌型 140</span></div><div class="fact"><span class="fk">費用</span><span class="fv">17,000 元／時段 ＋ 設備 4,000 元</span></div><div class="fact"><span class="fk">型式／設備</span><span class="fv">專業會議中心；投影、音響等設備完善</span></div><div class="fact"><span class="fk">交通</span><span class="fv">捷運淡水信義線（紅線）臺大醫院站 1 號出口步行約 5 分（或善導寺站約 8 分）</span></div><div class="fact"><span class="fk">可借日期</span><span class="fv">7/7、7/15 可使用（已預約）</span></div></div>
+        <div class="prosconcs">
+          <div class="pc pc-pro"><h4>優點</h4><ul><li>醫療體系場域、專業形象佳</li><li>捷運站直達，交通最便利</li><li>座位型式多元，分組型利於實作</li><li>設備完善</li></ul></div>
+          <div class="pc pc-con"><h4>缺點</h4><ul><li>租金為各場地最高</li><li>分組型僅 72 席，百人實作座位偏緊</li></ul></div>
+        </div>
+      </div>
+    </article>
+    <article class="card card-alt" data-region="北">
+      <div class="photos"><button class="photo-link" type="button" data-full="https://pfhsu.github.io/icope/NTNU.jpg" data-name="臺師大進修推廣學院 1F 演講堂" data-source="https://www.sce.ntnu.edu.tw/home/space/" aria-label="放大檢視 臺師大進修推廣學院 1F 演講堂 場地照片"><img class="photo" src="https://pfhsu.github.io/icope/NTNU.jpg" alt="臺師大進修推廣學院 1F 演講堂 場地照片" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none';this.parentElement.classList.add('photo-missing');"><span class="zoom-hint">放大檢視</span></button></div>
+      <div class="card-body">
+        <div class="card-head">
+          <h3><a class="venue-link" href="https://www.sce.ntnu.edu.tw/home/space/" target="_blank" rel="noopener" title="開啟場地官方網頁">臺師大進修推廣學院 1F 演講堂<span class="ext" aria-hidden="true">↗</span></a></h3>
+          <span class="badge badge-alt">次選</span>
+        </div>
+        <div class="facts"><div class="fact"><span class="fk">座位</span><span class="fv">148</span></div><div class="fact"><span class="fk">費用</span><span class="fv">9,980 元／時段</span></div><div class="fact"><span class="fk">型式／設備</span><span class="fv">E 化講桌、單槍投影、無線麥克風 4 支、白板</span></div><div class="fact"><span class="fk">交通</span><span class="fv">捷運古亭站步行約 8 分、台電大樓站約 10 分、東門站約 14 分；公車多線</span></div></div>
+        <div class="prosconcs">
+          <div class="pc pc-pro"><h4>優點</h4><ul><li>鄰近多條捷運線，交通便利</li><li>148 席容量充足</li><li>設備完整</li><li>租金較臺大經濟</li></ul></div>
+          <div class="pc pc-con"><h4>缺點</h4><ul><li>演講堂為固定排椅，較不利分組實作</li></ul></div>
+        </div>
+      </div>
+    </article></div>
+    </section>
+    <section class="region region-中">
+      <header class="region-head">
+        <span class="region-key">中</span>
+        <div class="region-titles">
+          <h2>中部場</h2>
+          <p class="region-fmt">實體＋線上同步 ‧ 無實作</p>
+        </div>
+      </header>
+      <div class="cards">
+    <article class="card card-rec" data-region="中">
+      <div class="photos"><button class="photo-link" type="button" data-full="https://www.meeting.com.tw/xinwuri/images/lease/401-slider-w1.jpg" data-name="高鐵烏日站會議中心" data-source="https://www.meeting.com.tw/xinwuri/room-401.php" aria-label="放大檢視 高鐵烏日站會議中心 場地照片"><img class="photo" src="https://www.meeting.com.tw/xinwuri/images/lease/401-slider-w1.jpg" alt="高鐵烏日站會議中心 場地照片" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none';this.parentElement.classList.add('photo-missing');"><span class="zoom-hint">放大檢視</span></button><button class="photo-link" type="button" data-full="https://www.meeting.com.tw/xinwuri/download/room-401-132.jpg" data-name="高鐵烏日站會議中心" data-source="https://www.meeting.com.tw/xinwuri/room-401.php" aria-label="放大檢視 高鐵烏日站會議中心 場地照片"><img class="photo" src="https://www.meeting.com.tw/xinwuri/download/room-401-132.jpg" alt="高鐵烏日站會議中心 場地照片" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none';this.parentElement.classList.add('photo-missing');"><span class="zoom-hint">放大檢視</span></button></div>
+      <div class="card-body">
+        <div class="card-head">
+          <h3><a class="venue-link" href="https://www.meeting.com.tw/xinwuri/room-401.php" target="_blank" rel="noopener" title="開啟場地官方網頁">高鐵烏日站會議中心<span class="ext" aria-hidden="true">↗</span></a></h3>
+          <span class="badge badge-rec">建議</span>
+        </div>
+        <div class="facts"><div class="fact"><span class="fk">座位</span><span class="fv">144</span></div><div class="fact"><span class="fk">費用</span><span class="fv">14,500 元 ＋10%（約 15,950 元）</span></div><div class="fact"><span class="fk">型式／設備</span><span class="fv">專業會議中心</span></div><div class="fact"><span class="fk">交通</span><span class="fv">三鐵共構，台鐵新烏日站／高鐵台中站出口步行約 1 分（約 50 公尺）即達；停車場電梯直達</span></div></div>
+        <div class="prosconcs">
+          <div class="pc pc-pro"><h4>優點</h4><ul><li>三鐵共構交通極便利，利外縣市與會</li><li>144 席</li><li>停車便利</li></ul></div>
+          <div class="pc pc-con"><h4>缺點</h4><ul><li>租金偏高，另加 10% 服務費</li></ul></div>
+        </div>
+      </div>
+    </article>
+    <article class="card card-alt" data-region="中">
+      <div class="photos"><button class="photo-link" type="button" data-full="https://www.meeting.com.tw/wenxin/images/lease/G1-slider-03.jpg" data-name="集思文心會議中心 4F G1" data-source="https://www.meeting.com.tw/wenxin/room-g1.php" aria-label="放大檢視 集思文心會議中心 4F G1 場地照片"><img class="photo" src="https://www.meeting.com.tw/wenxin/images/lease/G1-slider-03.jpg" alt="集思文心會議中心 4F G1 場地照片" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none';this.parentElement.classList.add('photo-missing');"><span class="zoom-hint">放大檢視</span></button><button class="photo-link" type="button" data-full="https://www.meeting.com.tw/wenxin/images/lease/G1-slider-01.jpg" data-name="集思文心會議中心 4F G1" data-source="https://www.meeting.com.tw/wenxin/room-g1.php" aria-label="放大檢視 集思文心會議中心 4F G1 場地照片"><img class="photo" src="https://www.meeting.com.tw/wenxin/images/lease/G1-slider-01.jpg" alt="集思文心會議中心 4F G1 場地照片" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none';this.parentElement.classList.add('photo-missing');"><span class="zoom-hint">放大檢視</span></button></div>
+      <div class="card-body">
+        <div class="card-head">
+          <h3><a class="venue-link" href="https://www.meeting.com.tw/wenxin/room-g1.php" target="_blank" rel="noopener" title="開啟場地官方網頁">集思文心會議中心 4F G1<span class="ext" aria-hidden="true">↗</span></a></h3>
+          <span class="badge badge-alt">次選</span>
+        </div>
+        <div class="facts"><div class="fact"><span class="fk">座位</span><span class="fv">須向場地確認</span></div><div class="fact"><span class="fk">費用</span><span class="fv">須向場地確認</span></div><div class="fact"><span class="fk">型式／設備</span><span class="fv">會議型空間</span></div><div class="fact"><span class="fk">交通</span><span class="fv">捷運市政府站 1 號出口步行約 5 分；鄰近公車站步行約 3 分</span></div></div>
+        <div class="prosconcs">
+          <div class="pc pc-pro"><h4>優點</h4><ul><li>鄰近捷運市政府站</li><li>位於市區，周邊機能佳</li></ul></div>
+          <div class="pc pc-con"><h4>缺點</h4><ul><li>交通便利性不及高鐵站</li><li>空間較小，百人規模恐不足</li></ul></div>
+        </div>
+      </div>
+    </article>
+    <article class="card card-alt" data-region="中">
+      <div class="photos"><button class="photo-link" type="button" data-full="https://fsis.thu.edu.tw/mosi/projects/spaces/1024/BS/BS109-1-1024.jpg" data-name="東海大學求真廳" data-source="https://space.thu.edu.tw/detail/BS/BS109/2026/24/" aria-label="放大檢視 東海大學求真廳 場地照片"><img class="photo" src="https://fsis.thu.edu.tw/mosi/projects/spaces/1024/BS/BS109-1-1024.jpg" alt="東海大學求真廳 場地照片" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none';this.parentElement.classList.add('photo-missing');"><span class="zoom-hint">放大檢視</span></button><button class="photo-link" type="button" data-full="https://fsis.thu.edu.tw/mosi/projects/spaces/1024/BS/BS109-6-1024.jpg" data-name="東海大學求真廳" data-source="https://space.thu.edu.tw/detail/BS/BS109/2026/24/" aria-label="放大檢視 東海大學求真廳 場地照片"><img class="photo" src="https://fsis.thu.edu.tw/mosi/projects/spaces/1024/BS/BS109-6-1024.jpg" alt="東海大學求真廳 場地照片" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none';this.parentElement.classList.add('photo-missing');"><span class="zoom-hint">放大檢視</span></button></div>
+      <div class="card-body">
+        <div class="card-head">
+          <h3><a class="venue-link" href="https://space.thu.edu.tw/detail/BS/BS109/2026/24/" target="_blank" rel="noopener" title="開啟場地官方網頁">東海大學求真廳<span class="ext" aria-hidden="true">↗</span></a></h3>
+          <span class="badge badge-alt">次選</span>
+        </div>
+        <div class="facts"><div class="fact"><span class="fk">座位</span><span class="fv">劇院型 112｜教室型 84｜分組型 54｜ㄇ字型 30</span></div><div class="fact"><span class="fk">費用</span><span class="fv">9,000 元</span></div><div class="fact"><span class="fk">型式／設備</span><span class="fv">階梯教室；E 化講桌、投影機；固定式座位</span></div><div class="fact"><span class="fk">交通</span><span class="fv">高鐵台中站搭高鐵快捷公車至「榮總／東海大學」站約 40–60 分；台中火車站搭 75/83/86/87/150 路公車約 30–40 分，下車經地下道步行約 5 分</span></div></div>
+        <div class="prosconcs">
+          <div class="pc pc-pro"><h4>優點</h4><ul><li>租金最經濟</li><li>階梯視野佳，適合演講與線上直播</li></ul></div>
+          <div class="pc pc-con"><h4>缺點</h4><ul><li>距高鐵／火車站較遠，需轉乘公車約 40–60 分</li><li>固定座位（中部無實作，影響較小）</li></ul></div>
+        </div>
+      </div>
+    </article></div>
+    </section>
+    <section class="region region-東">
+      <header class="region-head">
+        <span class="region-key">東</span>
+        <div class="region-titles">
+          <h2>東部場</h2>
+          <p class="region-fmt">實體＋線上同步 ‧ 無實作</p>
+        </div>
+      </header>
+      <div class="cards">
+    <article class="card card-rec" data-region="東">
+      <div class="photos"><button class="photo-link" type="button" data-full="https://ga.tcu.edu.tw/var/file/4/1004/img/928/DSC_0334%282%29.jpg" data-name="慈濟大學 B104 階梯教室" data-source="https://gm.tcu.edu.tw/?page_id=902" aria-label="放大檢視 慈濟大學 B104 階梯教室 場地照片"><img class="photo" src="https://ga.tcu.edu.tw/var/file/4/1004/img/928/DSC_0334%282%29.jpg" alt="慈濟大學 B104 階梯教室 場地照片" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none';this.parentElement.classList.add('photo-missing');"><span class="zoom-hint">放大檢視</span></button><button class="photo-link" type="button" data-full="https://ga.tcu.edu.tw/var/file/4/1004/img/928/DSC_0344%282%29.jpg" data-name="慈濟大學 B104 階梯教室" data-source="https://gm.tcu.edu.tw/?page_id=902" aria-label="放大檢視 慈濟大學 B104 階梯教室 場地照片"><img class="photo" src="https://ga.tcu.edu.tw/var/file/4/1004/img/928/DSC_0344%282%29.jpg" alt="慈濟大學 B104 階梯教室 場地照片" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none';this.parentElement.classList.add('photo-missing');"><span class="zoom-hint">放大檢視</span></button></div>
+      <div class="card-body">
+        <div class="card-head">
+          <h3><a class="venue-link" href="https://gm.tcu.edu.tw/?page_id=902" target="_blank" rel="noopener" title="開啟場地官方網頁">慈濟大學 B104 階梯教室<span class="ext" aria-hidden="true">↗</span></a></h3>
+          <span class="badge badge-rec">建議</span>
+        </div>
+        <div class="facts"><div class="fact"><span class="fk">座位</span><span class="fv">100（階梯教室）</span></div><div class="fact"><span class="fk">費用</span><span class="fv">1,000 元／時（4 小時 4,000 元）＋ 設備費 1,000 元／日</span></div><div class="fact"><span class="fk">型式／設備</span><span class="fv">階梯教室；投影、數位講桌、影音播放</span></div><div class="fact"><span class="fk">交通</span><span class="fv">花蓮（後）火車站計程車約 5 分／步行約 15 分；公車 305 路經慈大</span></div></div>
+        <div class="prosconcs">
+          <div class="pc pc-pro"><h4>優點</h4><ul><li>醫療體系熟悉、部分醫護人員母校</li><li>距後站近</li><li>100 席符合需求</li><li>設備齊全</li><li>租金經濟</li></ul></div>
+          <div class="pc pc-con"><h4>缺點</h4><ul><li>容量恰為 100，報名踴躍時較無彈性</li></ul></div>
+        </div>
+      </div>
+    </article>
+    <article class="card card-alt" data-region="東">
+      <div class="photos"><button class="photo-link" type="button" data-full="https://ga.tcust.edu.tw/var/file/4/1004/img/1076/A310-110.jpg" data-name="慈濟科技大學 A310" data-source="https://ga.tcust.edu.tw/p/412-1004-1071.php" aria-label="放大檢視 慈濟科技大學 A310 場地照片"><img class="photo" src="https://ga.tcust.edu.tw/var/file/4/1004/img/1076/A310-110.jpg" alt="慈濟科技大學 A310 場地照片" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none';this.parentElement.classList.add('photo-missing');"><span class="zoom-hint">放大檢視</span></button></div>
+      <div class="card-body">
+        <div class="card-head">
+          <h3><a class="venue-link" href="https://ga.tcust.edu.tw/p/412-1004-1071.php" target="_blank" rel="noopener" title="開啟場地官方網頁">慈濟科技大學 A310<span class="ext" aria-hidden="true">↗</span></a></h3>
+          <span class="badge badge-alt">次選</span>
+        </div>
+        <div class="facts"><div class="fact"><span class="fk">座位</span><span class="fv">120</span></div><div class="fact"><span class="fk">費用</span><span class="fv">1,800 元／時（4 小時 7,200 元）</span></div><div class="fact"><span class="fk">型式／設備</span><span class="fv">教室型空間</span></div><div class="fact"><span class="fk">交通</span><span class="fv">花蓮（後）火車站計程車約 10 分（約 150–200 元）；公車 305 路至終點站慈科大</span></div></div>
+        <div class="prosconcs">
+          <div class="pc pc-pro"><h4>優點</h4><ul><li>同屬慈濟醫療教育體系、醫護人員熟悉</li><li>120 席容量較具彈性</li></ul></div>
+          <div class="pc pc-con"><h4>缺點</h4><ul><li>租金較慈大高</li><li>距後站較遠</li></ul></div>
+        </div>
+      </div>
+    </article>
+    <article class="card card-no" data-region="東">
+      <div class="photos"><button class="photo-link" type="button" data-full="https://img.ltn.com.tw/Upload/art/page/800/2026/06/06/5462511_1.jpg" data-name="花蓮文化創意產業園區" data-source="https://www.taiwan.net.tw/m1.aspx?sNo=0001016&amp;id=A12-00295" aria-label="放大檢視 花蓮文化創意產業園區 場地照片"><img class="photo" src="https://img.ltn.com.tw/Upload/art/page/800/2026/06/06/5462511_1.jpg" alt="花蓮文化創意產業園區 場地照片" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none';this.parentElement.classList.add('photo-missing');"><span class="zoom-hint">放大檢視</span></button></div>
+      <div class="card-body">
+        <div class="card-head">
+          <h3><a class="venue-link" href="https://www.taiwan.net.tw/m1.aspx?sNo=0001016&amp;id=A12-00295" target="_blank" rel="noopener" title="開啟場地官方網頁">花蓮文化創意產業園區<span class="ext" aria-hidden="true">↗</span></a></h3>
+          <span class="badge badge-no">不建議</span>
+        </div>
+        <div class="facts"><div class="fact"><span class="fk">座位</span><span class="fv">約 100 人（倉庫型空間）</span></div><div class="fact"><span class="fk">費用</span><span class="fv">8,000 元／場次 ＋ 水電費 2,000 元／天</span></div><div class="fact"><span class="fk">型式／設備</span><span class="fv">倉庫型展演空間；無固定階梯座位與簡報設備</span></div><div class="fact"><span class="fk">交通</span><span class="fv">花蓮火車站步行約 20–30 分；計程車約 5–8 分</span></div><div class="fact"><span class="fk">可借日期</span><span class="fv">可借：7/21、7/22、7/23、7/28、7/29、7/30</span></div></div>
+        <div class="prosconcs">
+          <div class="pc pc-pro"><h4>優點</h4><ul><li>位於市區、具文創特色場域</li></ul></div>
+          <div class="pc pc-con"><h4>缺點</h4><ul><li>無固定座位與簡報／直播設備，不利說明會</li><li>距車站步行 20–30 分</li><li>週一休園</li><li>計費標準複雜（3 小時時段計，須事前送件審查）</li><li>與醫療場域連結弱</li></ul></div>
+        </div>
+      </div>
+    </article></div>
+    </section>
+    <section class="region region-南">
+      <header class="region-head">
+        <span class="region-key">南</span>
+        <div class="region-titles">
+          <h2>南部場</h2>
+          <p class="region-fmt">實體辦理 ‧ 含實作練習</p>
+        </div>
+      </header>
+      <div class="cards">
+    <article class="card card-rec" data-region="南">
+      <div class="photos"><button class="photo-link" type="button" data-full="https://cyns.cgust.edu.tw/var/file/22/1022/img/404/750946925.jpg" data-name="長庚科技大學嘉義分部（二）階梯教室 100 人" data-source="https://studentaffairs.cgust.edu.tw/p/412-1009-836.php" aria-label="放大檢視 長庚科技大學嘉義分部（二）階梯教室 100 人 場地照片"><img class="photo" src="https://cyns.cgust.edu.tw/var/file/22/1022/img/404/750946925.jpg" alt="長庚科技大學嘉義分部（二）階梯教室 100 人 場地照片" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none';this.parentElement.classList.add('photo-missing');"><span class="zoom-hint">放大檢視</span></button><button class="photo-link" type="button" data-full="https://cyns.cgust.edu.tw/var/file/22/1022/img/404/717703829.jpg" data-name="長庚科技大學嘉義分部（二）階梯教室 100 人" data-source="https://studentaffairs.cgust.edu.tw/p/412-1009-836.php" aria-label="放大檢視 長庚科技大學嘉義分部（二）階梯教室 100 人 場地照片"><img class="photo" src="https://cyns.cgust.edu.tw/var/file/22/1022/img/404/717703829.jpg" alt="長庚科技大學嘉義分部（二）階梯教室 100 人 場地照片" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none';this.parentElement.classList.add('photo-missing');"><span class="zoom-hint">放大檢視</span></button></div>
+      <div class="card-body">
+        <div class="card-head">
+          <h3><a class="venue-link" href="https://studentaffairs.cgust.edu.tw/p/412-1009-836.php" target="_blank" rel="noopener" title="開啟場地官方網頁">長庚科技大學嘉義分部（二）階梯教室 100 人<span class="ext" aria-hidden="true">↗</span></a></h3>
+          <span class="badge badge-rec">建議</span>
+        </div>
+        <div class="facts"><div class="fact"><span class="fk">座位</span><span class="fv">100（階梯教室）</span></div><div class="fact"><span class="fk">費用</span><span class="fv">本校自有場地（內部借用，免外租費用）</span></div><div class="fact"><span class="fk">型式／設備</span><span class="fv">階梯教室</span></div><div class="fact"><span class="fk">交通</span><span class="fv">高鐵嘉義站出口 2 搭 BRT 7211 至縣政府站約 8 分（25 元，持當日高鐵票免費），下車步行 2 分到校；台鐵嘉義（後）站搭 BRT 至縣政府站約 30–40 分（約 60 元）</span></div></div>
+        <div class="prosconcs">
+          <div class="pc pc-pro"><h4>優點</h4><ul><li>本校自有場地，行政協調最便利、可免外租費用</li><li>高鐵 BRT 直達</li><li>100 席符合需求</li></ul></div>
+          <div class="pc pc-con"><h4>缺點</h4><ul><li>階梯固定座位較不利分組實作（南部含實作場須留意）</li><li>位於朴子，對雲嘉以北與會者略偏</li></ul></div>
+        </div>
+      </div>
+    </article>
+    <article class="card card-alt" data-region="南">
+      <div class="photos"><button class="photo-link" type="button" data-full="https://tainan.taiwantrade.com/api/download?id=2c94bc0a65d004f20165fa1923110044" data-name="外貿協會臺南辦事處 會議室" data-source="https://tainan.taiwantrade.com/conference/detail?id=18" aria-label="放大檢視 外貿協會臺南辦事處 會議室 場地照片"><img class="photo" src="https://tainan.taiwantrade.com/api/download?id=2c94bc0a65d004f20165fa1923110044" alt="外貿協會臺南辦事處 會議室 場地照片" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none';this.parentElement.classList.add('photo-missing');"><span class="zoom-hint">放大檢視</span></button></div>
+      <div class="card-body">
+        <div class="card-head">
+          <h3><a class="venue-link" href="https://tainan.taiwantrade.com/conference/detail?id=18" target="_blank" rel="noopener" title="開啟場地官方網頁">外貿協會臺南辦事處 會議室<span class="ext" aria-hidden="true">↗</span></a></h3>
+          <span class="badge badge-alt">次選</span>
+        </div>
+        <div class="facts"><div class="fact"><span class="fk">座位</span><span class="fv">120 人</span></div><div class="fact"><span class="fk">費用</span><span class="fv">9,000 元／4 小時 ＋ 設備 1,200 元</span></div><div class="fact"><span class="fk">型式／設備</span><span class="fv">專業商務會議室（成功路 457 號 15 樓）；座椅多可彈性配置</span></div><div class="fact"><span class="fk">交通</span><span class="fv">臺南市中西區成功路 457 號 15 樓；台鐵台南站（前站）步行約 12–15 分／計程車約 5 分；高鐵轉沙崙線至台南站約 22 分</span></div></div>
+        <div class="prosconcs">
+          <div class="pc pc-pro"><h4>優點</h4><ul><li>專業商務會議空間、形象佳</li><li>120 席容量充足，優於其他南部場地</li><li>近台南火車站（前站）</li><li>會議室桌椅多可彈性配置，較利於實作</li></ul></div>
+          <div class="pc pc-con"><h4>缺點</h4><ul><li>設備費另計（1,200 元）</li><li>須向辦事處確認可借日期與桌型配置</li></ul></div>
+        </div>
+      </div>
+    </article>
+    <article class="card card-alt" data-region="南">
+      <div class="photos"><button class="photo-link" type="button" data-full="https://pfhsu.github.io/pfhsu/%E6%88%90%E5%A4%A71.jpg" data-name="國立成功大學 4263 視聽教室" data-source="https://serv-oga.ncku.edu.tw/p/412-1057-11615.php" aria-label="放大檢視 國立成功大學 4263 視聽教室 場地照片"><img class="photo" src="https://pfhsu.github.io/pfhsu/%E6%88%90%E5%A4%A71.jpg" alt="國立成功大學 4263 視聽教室 場地照片" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none';this.parentElement.classList.add('photo-missing');"><span class="zoom-hint">放大檢視</span></button><button class="photo-link" type="button" data-full="https://pfhsu.github.io/pfhsu/%E6%88%90%E5%A4%A72.jpg" data-name="國立成功大學 4263 視聽教室" data-source="https://serv-oga.ncku.edu.tw/p/412-1057-11615.php" aria-label="放大檢視 國立成功大學 4263 視聽教室 場地照片"><img class="photo" src="https://pfhsu.github.io/pfhsu/%E6%88%90%E5%A4%A72.jpg" alt="國立成功大學 4263 視聽教室 場地照片" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none';this.parentElement.classList.add('photo-missing');"><span class="zoom-hint">放大檢視</span></button></div>
+      <div class="card-body">
+        <div class="card-head">
+          <h3><a class="venue-link" href="https://serv-oga.ncku.edu.tw/p/412-1057-11615.php" target="_blank" rel="noopener" title="開啟場地官方網頁">國立成功大學 4263 視聽教室<span class="ext" aria-hidden="true">↗</span></a></h3>
+          <span class="badge badge-alt">次選</span>
+        </div>
+        <div class="facts"><div class="fact"><span class="fk">座位</span><span class="fv">110</span></div><div class="fact"><span class="fk">費用</span><span class="fv">每 4 小時 5,000 元／每 8 小時 10,000 元（假日不開放）</span></div><div class="fact"><span class="fk">型式／設備</span><span class="fv">視聽教室；成功校區資工系館 2 樓；固定座位</span></div><div class="fact"><span class="fk">交通</span><span class="fv">台鐵台南站（後站）沿大學路步行約 10–15 分；高鐵轉沙崙線至台南站約 22 分</span></div><div class="fact"><span class="fk">可借日期</span><span class="fv">7/16–7/21 辦理轉學考，不外借</span></div></div>
+        <div class="prosconcs">
+          <div class="pc pc-pro"><h4>優點</h4><ul><li>學術／醫療場域、部分醫護人員熟悉</li><li>110 席容量充足</li><li>台南火車站步行可達，市中心地段</li></ul></div>
+          <div class="pc pc-con"><h4>缺點</h4><ul><li>假日不開放，須排平日</li><li>視聽教室固定座位較不利分組實作</li></ul></div>
+        </div>
+      </div>
+    </article></div>
+    </section>
+
+  <div class="doc-foot">
+    <p>標示說明：<strong style="color:var(--rec)">建議</strong>　<strong style="color:var(--alt)">次選</strong>　<strong style="color:var(--no)">不建議</strong>　｜　建議僅供主管評估參考，最終以核定為準。</p>
+    <p>點選<strong>場地名稱</strong>可開啟官方網頁；點選<strong>照片</strong>可放大檢視並連結原圖。照片由各場地官網連結載入，需連網檢視。費用與容量請於正式預約前再次向場地確認。</p>
+    <p class="contact">如有任何疑問，請聯絡計畫助理　許碧芬　<a href="mailto:pfhsu@mail.cgust.edu.tw">pfhsu@mail.cgust.edu.tw</a></p>
+  </div>
+
+</div>
+
+<div id="lightbox" class="lightbox" hidden role="dialog" aria-modal="true" aria-label="場地照片預覽">
+  <button class="lb-close" type="button" aria-label="關閉預覽">&times;</button>
+  <figure class="lb-fig">
+    <img id="lb-img" src="" alt="">
+    <figcaption class="lb-cap">
+      <span class="lb-name" id="lb-name"></span>
+      <a id="lb-orig" href="#" target="_blank" rel="noopener">在新分頁開啟原圖 ↗</a>
+      <a id="lb-src" href="#" target="_blank" rel="noopener">查看場地官網 ↗</a>
+    </figcaption>
+  </figure>
+</div>
+
+<script>
+(function () {
+  var lb = document.getElementById('lightbox');
+  var lbImg = document.getElementById('lb-img');
+  var lbName = document.getElementById('lb-name');
+  var lbOrig = document.getElementById('lb-orig');
+  var lbSrc = document.getElementById('lb-src');
+  var lastFocus = null;
+
+  function openLB(full, name, source) {
+    lbImg.src = full; lbImg.alt = name + ' 場地照片';
+    lbName.textContent = name;
+    lbOrig.href = full; lbSrc.href = source;
+    lb.hidden = false;
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLB() {
+    lb.hidden = true; lbImg.src = '';
+    document.body.style.overflow = '';
+    if (lastFocus) lastFocus.focus();
+  }
+
+  document.querySelectorAll('.photo-link').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      lastFocus = btn;
+      var failed = btn.classList.contains('photo-missing');
+      if (failed) { window.open(btn.dataset.source, '_blank', 'noopener'); return; }
+      openLB(btn.dataset.full, btn.dataset.name, btn.dataset.source);
+    });
+  });
+
+  document.querySelector('.lb-close').addEventListener('click', closeLB);
+  lb.addEventListener('click', function (e) { if (e.target === lb) closeLB(); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !lb.hidden) closeLB();
+  });
+})();
+</script>
+</body>
+</html>
