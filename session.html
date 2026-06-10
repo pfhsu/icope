@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>115 年 ICOPE 說明會 ‧ 辦理排程（含場地照片）</title>
+<style>
+  :root {
+    --ink:#1c2a32; --ink-soft:#54636d; --line:#e2e7ea; --line-soft:#eef1f3;
+    --paper:#fff; --panel:#f6f8f9; --bg:#eceff1; --teal:#13726b; --teal-deep:#0d5550;
+    --rec:#1d7a44; --rec-bg:#e9f4ee; --alt:#9a6a10; --alt-bg:#f7f0e2; --con:#a23b3b;
+    --r-北:#2563a8; --r-中:#b1660a; --r-東:#13726b; --r-南:#a23b6e;
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink);
+    font-family:"PingFang TC","Noto Sans TC","Microsoft JhengHei","Segoe UI",system-ui,sans-serif;
+    font-size:15px; line-height:1.7; }
+  .sheet { max-width:1000px; margin:28px auto; background:var(--paper);
+    box-shadow:0 1px 3px rgba(20,40,50,.08),0 12px 32px rgba(20,40,50,.10);
+    border-radius:4px; overflow:hidden; }
+  .doc-head { padding:32px 44px 24px; border-top:5px solid var(--teal); border-bottom:1px solid var(--line); }
+  .doc-logos { display:flex; align-items:center; gap:16px; margin-bottom:18px; flex-wrap:wrap; }
+  .logo-box { height:48px; display:flex; align-items:center; }
+  .logo-box img { height:42px; width:auto; max-width:220px; object-fit:contain; display:block; }
+  .logo-box.logo-failed { padding:7px 13px; border:1px solid var(--line); border-radius:8px; background:var(--panel); }
+  .logo-box.logo-failed::after { content:attr(data-label); font-weight:800; font-size:14px; color:var(--teal-deep); }
+  .logo-divider { width:1px; height:30px; background:var(--line); }
+  .doc-org { font-size:13px; color:var(--ink-soft); }
+  .doc-head h1 { margin:8px 0 10px; font-size:24px; font-weight:800; line-height:1.35; }
+  .doc-meta { font-size:12.5px; color:var(--ink-soft); }
+  .block { padding:24px 44px; border-bottom:1px solid var(--line-soft); }
+  .eyebrow { font-size:12px; font-weight:700; letter-spacing:.16em; color:var(--teal-deep); margin:0 0 14px; }
+  /* calendar */
+  .cal { width:100%; border-collapse:separate; border-spacing:5px; table-layout:fixed; }
+  .cal th { font-size:12px; color:var(--ink-soft); font-weight:700; padding:3px 0; text-align:center; }
+  .cal td { height:78px; vertical-align:top; border:1px solid var(--line-soft); border-radius:7px; padding:5px 6px; }
+  .cal td.muted { background:#fafbfc; border-color:transparent; }
+  .cal .dnum { font-weight:700; font-size:14px; color:var(--ink); }
+  .cal td.ev { border-left-width:4px; }
+  .cal td.ev-alt { background:#fff !important; border-style:dashed; }
+  .cal .ev-tag { display:inline-block; font-size:10.5px; font-weight:800; color:#fff; padding:1px 8px; border-radius:999px; margin:4px 0 0; }
+  .cal td.ev-alt .ev-tag { background:transparent; color:var(--r-南); border:1px solid var(--r-南); }
+  .cal .ev-venue { display:block; margin-top:4px; font-size:11px; color:var(--ink); line-height:1.35; }
+  .cal .ev-sub { display:block; margin-top:3px; font-size:10px; color:var(--ink-soft); }
+  .cal .orig { display:block; margin-top:4px; font-size:10.5px; color:var(--ink-soft); text-decoration:line-through; }
+  .cal td.ev-北 { border-left-color:var(--r-北); background:#f4f8fc; } .ev-北 .ev-tag { background:var(--r-北); }
+  .cal td.ev-中 { border-left-color:var(--r-中); background:#fbf6ed; } .ev-中 .ev-tag { background:var(--r-中); }
+  .cal td.ev-東 { border-left-color:var(--r-東); background:#eef7f5; } .ev-東 .ev-tag { background:var(--r-東); }
+  .cal td.ev-南 { border-left-color:var(--r-南); background:#fbf1f6; } .ev-南 .ev-tag { background:var(--r-南); }
+  /* overview table */
+  table.ov { width:100%; border-collapse:collapse; font-size:13.5px; }
+  table.ov th, table.ov td { text-align:left; padding:10px 10px; border-bottom:1px solid var(--line-soft); vertical-align:middle; }
+  table.ov thead th { font-size:12px; color:var(--ink-soft); letter-spacing:.06em; border-bottom:1.5px solid var(--line); }
+  td.o-date { font-weight:800; white-space:nowrap; }
+  td.o-time { font-variant-numeric:tabular-nums; white-space:nowrap; }
+  td.o-venue { font-weight:600; }
+  /* callout */
+  .callout { margin:0 44px 4px; padding:14px 18px; background:#fbf6ed; border:1px solid #efe2c7;
+    border-left:4px solid var(--alt); border-radius:8px; font-size:13.5px; }
+  .callout b { color:var(--alt); }
+  /* timeline */
+  .timeline { padding:18px 36px 8px; }
+  .day { display:grid; grid-template-columns:96px 1fr; gap:18px; padding:14px 0; border-top:1px dashed var(--line); }
+  .day:first-child { border-top:none; }
+  .day-rail { text-align:center; padding-top:6px; }
+  .day-num { font-size:34px; font-weight:800; line-height:1; color:var(--teal-deep); }
+  .day-mon { font-size:12px; color:var(--ink-soft); margin-top:2px; }
+  .day-wd { font-size:13px; font-weight:700; margin-top:6px; }
+  .day-yr { font-size:11px; color:var(--ink-soft); margin-top:2px; }
+  .day-cards { display:flex; flex-direction:column; gap:12px; }
+  .scard { border:1px solid var(--line); border-radius:8px; overflow:hidden; background:var(--paper); border-left:4px solid var(--line); }
+  .scard.region-北 { border-left-color:var(--r-北); }
+  .scard.region-中 { border-left-color:var(--r-中); }
+  .scard.region-東 { border-left-color:var(--r-東); }
+  .scard.region-南 { border-left-color:var(--r-南); }
+  .scard.tier-backup, .scard.tier-conditional { background:#fafbfc; }
+  .scard-top { display:flex; align-items:center; gap:10px; padding:9px 14px; border-bottom:1px solid var(--line-soft); background:var(--panel); }
+  .region-chip { font-size:12px; font-weight:800; color:#fff; padding:2px 10px; border-radius:999px; }
+  .chip-北 { background:var(--r-北); } .chip-中 { background:var(--r-中); }
+  .chip-東 { background:var(--r-東); } .chip-南 { background:var(--r-南); }
+  .stime { font-weight:700; font-variant-numeric:tabular-nums; }
+  .spacer { flex:1; }
+  .badge { font-size:11.5px; font-weight:800; padding:2px 10px; border-radius:999px; white-space:nowrap; }
+  .b-primary { color:var(--teal-deep); background:var(--rec-bg); }
+  .b-backup { color:var(--ink-soft); background:#eef1f3; }
+  .b-conditional { color:var(--alt); background:var(--alt-bg); }
+  .b-option { color:var(--teal-deep); background:#fff; border:1px solid var(--teal); }
+  .b-booked { color:var(--rec); background:var(--rec-bg); }
+  .b-tbd { color:var(--alt); background:var(--alt-bg); }
+  .scard-body { display:grid; grid-template-columns:200px 1fr; }
+  .sphotos { display:flex; flex-direction:column; gap:2px; background:var(--panel); }
+  .photo-link { position:relative; flex:1; min-height:84px; border:none; padding:0; cursor:zoom-in; background:var(--panel); overflow:hidden; }
+  .photo { width:100%; height:100%; object-fit:cover; display:block; min-height:84px; }
+  .zoom-hint { position:absolute; right:7px; bottom:7px; font-size:10.5px; font-weight:700; color:#fff; background:rgba(20,40,50,.6); padding:2px 8px; border-radius:999px; opacity:0; transition:opacity .15s; }
+  .photo-link:hover .zoom-hint { opacity:1; }
+  .photo-link.photo-missing { cursor:pointer; }
+  .photo-link.photo-missing .zoom-hint { display:none; }
+  .photo-link.photo-missing::after { content:"場地照片 ‧ 點此查看來源"; position:absolute; inset:0; display:flex; align-items:center; justify-content:center; text-align:center; font-size:11.5px; color:var(--ink-soft); background:repeating-linear-gradient(45deg,#eef1f3,#eef1f3 9px,#e7ebed 9px,#e7ebed 18px); padding:8px; }
+  .sdetails { padding:13px 18px 14px; }
+  .svenue { font-size:16px; font-weight:800; margin-bottom:8px; }
+  .venue-link { color:var(--ink); text-decoration:none; }
+  .venue-link:hover { color:var(--teal-deep); text-decoration:underline; text-underline-offset:3px; }
+  .venue-link .ext { font-size:11.5px; color:var(--ink-soft); margin-left:4px; }
+  .sfact { display:grid; grid-template-columns:78px 1fr; gap:8px; padding:4px 0; font-size:13.5px; border-bottom:1px solid var(--line-soft); }
+  .sk { color:var(--ink-soft); font-weight:600; }
+  .snote { margin-top:9px; font-size:12.5px; color:var(--ink-soft); background:var(--panel); border-radius:6px; padding:7px 11px; }
+  .tier-conditional .snote { background:var(--alt-bg); color:#7a5408; }
+  .doc-foot { padding:18px 44px 28px; font-size:12px; color:var(--ink-soft); background:var(--panel); border-top:1px solid var(--line); }
+  .doc-foot p { margin:3px 0; }
+  .contact { margin-top:10px !important; padding-top:10px; border-top:1px solid var(--line); font-size:13px; color:var(--ink); }
+  .contact a { color:var(--teal-deep); font-weight:600; }
+  /* lightbox */
+  .lightbox { position:fixed; inset:0; z-index:50; background:rgba(15,28,34,.86); display:flex; align-items:center; justify-content:center; padding:28px; }
+  .lightbox[hidden] { display:none; }
+  .lb-fig { margin:0; display:flex; flex-direction:column; align-items:center; gap:12px; }
+  #lb-img { max-width:92vw; max-height:78vh; object-fit:contain; border-radius:4px; background:#fff; box-shadow:0 12px 40px rgba(0,0,0,.4); }
+  .lb-cap { color:#e9eef0; font-size:13px; text-align:center; }
+  .lb-cap .lb-name { font-weight:700; display:block; margin-bottom:6px; }
+  .lb-cap a { color:#9fd6cf; text-decoration:none; margin:0 10px; font-weight:600; }
+  .lb-close { position:fixed; top:18px; right:22px; width:40px; height:40px; border-radius:50%; border:none; background:rgba(255,255,255,.14); color:#fff; font-size:24px; cursor:pointer; }
+  @media (max-width:720px) {
+    .sheet { margin:0; } .doc-head,.block,.doc-foot { padding-left:20px; padding-right:20px; }
+    .callout { margin-left:20px; margin-right:20px; } .timeline { padding:14px 16px; }
+    .day { grid-template-columns:1fr; gap:8px; }
+    .day-rail { display:flex; align-items:baseline; gap:10px; text-align:left; padding-top:0; }
+    .day-num { font-size:26px; } .day-mon,.day-wd,.day-yr { margin-top:0; }
+    .scard-body { grid-template-columns:1fr; } .sphotos { flex-direction:row; } .photo-link { min-height:120px; }
+  }
+  @media print {
+    @page { margin:14mm 12mm; }
+    body { background:#fff; font-size:11pt; }
+    .sheet { box-shadow:none; margin:0; max-width:none; border-radius:0; }
+    .doc-foot { background:#fff; }
+    .day, .scard { break-inside:avoid; }
+    .eyebrow { break-after:avoid; }
+    .zoom-hint { display:none !important; }
+    .lightbox { display:none !important; }
+    .venue-link { color:var(--teal-deep); text-decoration:none; }
+  }
+</style></head>
+<body>
+<div class="sheet">
+  <div class="doc-head">
+    <div class="doc-logos">
+      <span class="logo-box" data-label="長庚科技大學"><img src="https://lis.cgust.edu.tw/var/file/19/1019/pictures/419/part_20738_4665221_36590.jpg" alt="長庚科技大學" referrerpolicy="no-referrer" onerror="this.style.display='none';this.parentElement.classList.add('logo-failed');"></span>
+      <span class="logo-divider"></span>
+      <span class="logo-box" data-label="衛生福利部國民健康署"><img src="https://www.hpa.gov.tw/NewPageStyle/TW/images/logo/logo.png" alt="衛生福利部國民健康署" referrerpolicy="no-referrer" onerror="this.style.display='none';this.parentElement.classList.add('logo-failed');"></span>
+    </div>
+    <div class="doc-org">長庚科技大學　115 年長者內在能力檢測教育訓練計畫（分項 1）</div>
+    <h1>115 年 ICOPE 說明會 ‧ 辦理排程（含場地照片）</h1>
+    <div class="doc-meta">承辦：計畫團隊　｜　用途：辦理排程簽核參考　｜　期程：115 年 7 月</div>
+  </div>
+
+  <div class="block">
+    <p class="eyebrow">壹 ‧ 排程速覽（115 年 7 月行事曆）</p>
+    <table class="cal"><thead><tr><th>日</th><th>一</th><th>二</th><th>三</th><th>四</th><th>五</th><th>六</th></tr></thead><tbody><tr><td class="muted"></td><td class="muted"></td><td class="muted"></td><td><span class="dnum">1</span></td><td><span class="dnum">2</span></td><td><span class="dnum">3</span></td><td><span class="dnum">4</span></td></tr><tr><td><span class="dnum">5</span></td><td><span class="dnum">6</span></td><td><span class="dnum">7</span></td><td><span class="dnum">8</span></td><td><span class="dnum">9</span></td><td><span class="dnum">10</span></td><td><span class="dnum">11</span></td></tr><tr><td><span class="dnum">12</span></td><td><span class="dnum">13</span></td><td><span class="dnum">14</span></td><td class="ev ev-南 ev-alt"><span class="dnum">15</span><span class="ev-tag">南部 A案</span><span class="ev-venue">成大／長庚</span></td><td class="ev ev-南"><span class="dnum">16</span><span class="ev-tag">南部 B案</span><span class="ev-venue">外貿協會臺南 ‧ 12:30</span></td><td><span class="dnum">17</span></td><td><span class="dnum">18</span></td></tr><tr><td><span class="dnum">19</span></td><td><span class="dnum">20</span></td><td><span class="dnum">21</span></td><td class="ev ev-北"><span class="dnum">22</span><span class="ev-tag">北部</span><span class="ev-venue">臺大 402AB ‧ 09:00</span><span class="ev-sub">下午備用：臺師大</span></td><td><span class="dnum">23</span></td><td><span class="dnum">24</span></td><td><span class="dnum">25</span></td></tr><tr><td><span class="dnum">26</span></td><td><span class="dnum">27</span></td><td class="ev ev-東"><span class="dnum">28</span><span class="ev-tag">東部</span><span class="ev-venue">花蓮文創 ‧ 12:30</span><span class="ev-sub">中部備案：集思文心</span></td><td><span class="dnum">29</span></td><td class="ev ev-中"><span class="dnum">30</span><span class="ev-tag">中部</span><span class="ev-venue">臺中科大 ‧ 12:30</span><span class="ev-sub">東部備案：花蓮文創</span></td><td><span class="dnum">31</span></td><td class="muted"></td></tr></tbody></table>
+  </div>
+
+  <div class="block">
+    <p class="eyebrow">貳 ‧ 排程一覽（含備用／備案）</p>
+    <table class="ov">
+      <thead><tr><th>日期</th><th>場次</th><th>方案</th><th>時間</th><th>地點</th><th>主講</th><th>狀態</th></tr></thead>
+      <tbody><tr><td class="o-date">7/15（三）</td><td>南部場</td><td><span class="badge b-option">A 案</span></td><td class="o-time">12:30–16:00</td><td class="o-venue">成功大學／長庚科大嘉義分部</td><td>李純瑩、鍾孟修</td><td><span class="badge b-tbd">待擇定</span></td></tr><tr><td class="o-date">7/16（四）</td><td>南部場</td><td><span class="badge b-option">B 案</span></td><td class="o-time">12:30–16:00</td><td class="o-venue">外貿協會臺南辦事處（屬意場地）</td><td>李純瑩、鍾孟修</td><td><span class="badge b-booked">已預約</span></td></tr><tr><td class="o-date">7/22（三）</td><td>北部場</td><td><span class="badge b-primary">優先</span></td><td class="o-time">09:00–12:30</td><td class="o-venue">臺大醫院國際會議廳 402AB</td><td>吳桂花、鍾孟修</td><td><span class="badge b-booked">已預約</span></td></tr><tr><td class="o-date">7/22（三）</td><td>北部場</td><td><span class="badge b-backup">備用</span></td><td class="o-time">12:30–16:00</td><td class="o-venue">臺師大進修推廣學院演講堂</td><td>吳桂花、鍾孟修</td><td>—</td></tr><tr><td class="o-date">7/28（二）</td><td>東部場</td><td><span class="badge b-primary">優先</span></td><td class="o-time">12:30–14:00</td><td class="o-venue">花蓮文化創意產業園區</td><td>彭鈺婷</td><td><span class="badge b-booked">已預約</span></td></tr><tr><td class="o-date">7/28（二）</td><td>中部場</td><td><span class="badge b-conditional">備案</span></td><td class="o-time">12:30–14:00</td><td class="o-venue">集思文心會議中心（須東部優先改期）</td><td>黃興舒</td><td>—</td></tr><tr><td class="o-date">7/30（四）</td><td>中部場</td><td><span class="badge b-primary">優先</span></td><td class="o-time">12:30–14:00</td><td class="o-venue">國立臺中科技大學</td><td>黃興舒</td><td><span class="badge b-booked">已預約</span></td></tr><tr><td class="o-date">7/30（四）</td><td>東部場</td><td><span class="badge b-conditional">備案</span></td><td class="o-time">12:30–14:00</td><td class="o-venue">花蓮文創（須中部優先改期）</td><td>彭鈺婷</td><td>—</td></tr></tbody>
+    </table>
+  </div>
+
+  <div class="callout">
+    <b>南部場待計畫主持人擇定：</b>A 案 7/15（沿用原訂日期，改用成功大學或長庚科大嘉義分部）；
+    B 案 7/16（使用屬意場地外貿協會臺南辦事處，已預約）。屬意場地於 7/15 無空檔，若確定採用該場地，辦理日須改為 7/16。
+  </div>
+
+  <div class="callout">
+    <b>東部 ↔ 中部互為條件：</b>基本方案為「東部 7/28（花蓮文創）＋ 中部 7/30（臺中科大）」。
+    若其中一場之優先日需異動，則改採備案——東部改 7/30、或中部改 7/28（集思文心），兩者擇一連動調整。
+  </div>
+
+  <div class="block" style="border-bottom:none; padding-bottom:4px;">
+    <p class="eyebrow">參 ‧ 各場次排程（優先版 ‧ 含場地照片）</p>
+  </div>
+  <div class="timeline">
+      <section class="day">
+        <div class="day-rail">
+          <div class="day-num">16</div>
+          <div class="day-mon">7 月</div>
+          <div class="day-wd">星期四</div>
+          <div class="day-yr">115.7.16</div>
+        </div>
+        <div class="day-cards">
+      <article class="scard tier-primary region-南">
+        <div class="scard-top">
+          <span class="region-chip chip-南">南部場</span>
+          <span class="stime">12:30–16:00</span>
+          <span class="spacer"></span>
+          <span class="badge b-option">南部 B 案</span><span class="badge b-booked">已預約</span>
+        </div>
+        <div class="scard-body">
+          <div class="sphotos"><button class="photo-link" type="button" data-full="https://tainan.taiwantrade.com/api/download?id=2c94bc0a65d004f20165fa1923110044" data-name="外貿協會臺南辦事處 會議室" data-source="https://tainan.taiwantrade.com/conference/detail?id=18" aria-label="放大檢視 外貿協會臺南辦事處 會議室 照片"><img class="photo" src="https://tainan.taiwantrade.com/api/download?id=2c94bc0a65d004f20165fa1923110044" alt="外貿協會臺南辦事處 會議室 場地照片" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none';this.parentElement.classList.add('photo-missing');"><span class="zoom-hint">放大</span></button></div>
+          <div class="sdetails">
+            <div class="svenue"><a class="venue-link" href="https://tainan.taiwantrade.com/conference/detail?id=18" target="_blank" rel="noopener">外貿協會臺南辦事處 會議室<span class="ext">↗</span></a></div>
+            <div class="sfact"><span class="sk">主講講師</span><span class="sv">李純瑩 主任、鍾孟修 執行長</span></div>
+            <div class="sfact"><span class="sk">國健署長官</span><span class="sv">待確認</span></div>
+            <div class="sfact"><span class="sk">出席團隊</span><span class="sv">趙副、倪老師、王老師、偉婷、碧芬（5 人）</span></div>
+            <div class="snote">改至 7/16 以使用屬意場地外貿協會臺南辦事處（已預約）。南部 A／B 兩案請計畫主持人擇定。</div>
+          </div>
+        </div>
+      </article></div>
+      </section>
+      <section class="day">
+        <div class="day-rail">
+          <div class="day-num">22</div>
+          <div class="day-mon">7 月</div>
+          <div class="day-wd">星期三</div>
+          <div class="day-yr">115.7.22</div>
+        </div>
+        <div class="day-cards">
+      <article class="scard tier-primary region-北">
+        <div class="scard-top">
+          <span class="region-chip chip-北">北部場</span>
+          <span class="stime">09:00–12:30</span>
+          <span class="spacer"></span>
+          <span class="badge b-primary">優先</span><span class="badge b-booked">已預約</span>
+        </div>
+        <div class="scard-body">
+          <div class="sphotos"><button class="photo-link" type="button" data-full="https://www.nthcc.com.tw/Upload/202509/restaurant_2025090516241201.webp" data-name="臺大醫院國際會議廳 402AB" data-source="https://www.nthcc.com.tw/" aria-label="放大檢視 臺大醫院國際會議廳 402AB 照片"><img class="photo" src="https://www.nthcc.com.tw/Upload/202509/restaurant_2025090516241201.webp" alt="臺大醫院國際會議廳 402AB 場地照片" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none';this.parentElement.classList.add('photo-missing');"><span class="zoom-hint">放大</span></button></div>
+          <div class="sdetails">
+            <div class="svenue"><a class="venue-link" href="https://www.nthcc.com.tw/" target="_blank" rel="noopener">臺大醫院國際會議廳 402AB<span class="ext">↗</span></a></div>
+            <div class="sfact"><span class="sk">主講講師</span><span class="sv">吳桂花 副教授、鍾孟修 執行長</span></div>
+            <div class="sfact"><span class="sk">國健署長官</span><span class="sv">待確認</span></div>
+            <div class="sfact"><span class="sk">出席團隊</span><span class="sv">趙副、倪老師、黃老師、王老師、偉婷、碧芬（6 人）</span></div>
+            <div class="snote">北部優先時段（上午）。</div>
+          </div>
+        </div>
+      </article></div>
+      </section>
+      <section class="day">
+        <div class="day-rail">
+          <div class="day-num">28</div>
+          <div class="day-mon">7 月</div>
+          <div class="day-wd">星期二</div>
+          <div class="day-yr">115.7.28</div>
+        </div>
+        <div class="day-cards">
+      <article class="scard tier-primary region-東">
+        <div class="scard-top">
+          <span class="region-chip chip-東">東部場</span>
+          <span class="stime">12:30–14:00</span>
+          <span class="spacer"></span>
+          <span class="badge b-primary">優先</span><span class="badge b-booked">已預約</span>
+        </div>
+        <div class="scard-body">
+          <div class="sphotos"><button class="photo-link" type="button" data-full="https://img.ltn.com.tw/Upload/art/page/800/2026/06/06/5462511_1.jpg" data-name="花蓮文化創意產業園區" data-source="https://www.taiwan.net.tw/m1.aspx?sNo=0001016&amp;id=A12-00295" aria-label="放大檢視 花蓮文化創意產業園區 照片"><img class="photo" src="https://img.ltn.com.tw/Upload/art/page/800/2026/06/06/5462511_1.jpg" alt="花蓮文化創意產業園區 場地照片" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none';this.parentElement.classList.add('photo-missing');"><span class="zoom-hint">放大</span></button></div>
+          <div class="sdetails">
+            <div class="svenue"><a class="venue-link" href="https://www.taiwan.net.tw/m1.aspx?sNo=0001016&amp;id=A12-00295" target="_blank" rel="noopener">花蓮文化創意產業園區<span class="ext">↗</span></a></div>
+            <div class="sfact"><span class="sk">主講講師</span><span class="sv">彭鈺婷 醫師</span></div>
+            <div class="sfact"><span class="sk">國健署長官</span><span class="sv">待確認</span></div>
+            <div class="sfact"><span class="sk">出席團隊</span><span class="sv">趙副、倪老師、黃老師、偉婷、碧芬（5 人）</span></div>
+            <div class="snote">東部優先時段。</div>
+          </div>
+        </div>
+      </article></div>
+      </section>
+      <section class="day">
+        <div class="day-rail">
+          <div class="day-num">30</div>
+          <div class="day-mon">7 月</div>
+          <div class="day-wd">星期四</div>
+          <div class="day-yr">115.7.30</div>
+        </div>
+        <div class="day-cards">
+      <article class="scard tier-primary region-中">
+        <div class="scard-top">
+          <span class="region-chip chip-中">中部場</span>
+          <span class="stime">12:30–14:00</span>
+          <span class="spacer"></span>
+          <span class="badge b-primary">優先</span><span class="badge b-booked">已預約</span>
+        </div>
+        <div class="scard-body">
+          <div class="sphotos"><button class="photo-link" type="button" data-full="https://garms.nutc.edu.tw/_pl_map/_PIC/11.jpg" data-name="國立臺中科技大學" data-source="https://garms.nutc.edu.tw/VenueRental/VRPlace?_p=4" aria-label="放大檢視 國立臺中科技大學 照片"><img class="photo" src="https://garms.nutc.edu.tw/_pl_map/_PIC/11.jpg" alt="國立臺中科技大學 場地照片" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none';this.parentElement.classList.add('photo-missing');"><span class="zoom-hint">放大</span></button></div>
+          <div class="sdetails">
+            <div class="svenue"><a class="venue-link" href="https://garms.nutc.edu.tw/VenueRental/VRPlace?_p=4" target="_blank" rel="noopener">國立臺中科技大學<span class="ext">↗</span></a></div>
+            <div class="sfact"><span class="sk">主講講師</span><span class="sv">黃興舒 副院長</span></div>
+            <div class="sfact"><span class="sk">國健署長官</span><span class="sv">待確認</span></div>
+            <div class="sfact"><span class="sk">出席團隊</span><span class="sv">趙副、倪老師、黃老師、偉婷、碧芬（5 人）</span></div>
+            <div class="snote">中部優先時段。場地雖非原討論範圍，但交通便利、費用合理。</div>
+          </div>
+        </div>
+      </article></div>
+      </section></div>
+
+  <div class="doc-foot">
+    <p>標示：<b style="color:var(--teal-deep)">優先</b>　<b style="color:var(--ink-soft)">備用</b>（同區替代）　<b style="color:var(--alt)">條件備案</b>（須連動改期）　｜　<b style="color:var(--rec)">已預約</b>　待確認。</p>
+    <p>點選場地名稱可開啟官網；點選照片可放大檢視。照片由各場地官網連結載入，需連網檢視。國健署長官出席名單尚待確認。</p>
+    <p class="contact">如有任何疑問，請聯絡計畫助理　許碧芬　<a href="mailto:pfhsu@mail.cgust.edu.tw">pfhsu@mail.cgust.edu.tw</a></p>
+  </div>
+</div>
+
+<div id="lightbox" class="lightbox" hidden role="dialog" aria-modal="true" aria-label="場地照片預覽">
+  <button class="lb-close" type="button" aria-label="關閉預覽">&times;</button>
+  <figure class="lb-fig"><img id="lb-img" src="" alt="">
+    <figcaption class="lb-cap"><span class="lb-name" id="lb-name"></span>
+      <a id="lb-orig" href="#" target="_blank" rel="noopener">在新分頁開啟原圖 ↗</a>
+      <a id="lb-src" href="#" target="_blank" rel="noopener">查看場地官網 ↗</a>
+    </figcaption></figure>
+</div>
+<script>
+(function(){
+  var lb=document.getElementById('lightbox'),im=document.getElementById('lb-img'),
+      nm=document.getElementById('lb-name'),og=document.getElementById('lb-orig'),sc=document.getElementById('lb-src'),lf=null;
+  function open(f,n,s){im.src=f;im.alt=n;nm.textContent=n;og.href=f;sc.href=s;lb.hidden=false;document.body.style.overflow='hidden';}
+  function close(){lb.hidden=true;im.src='';document.body.style.overflow='';if(lf)lf.focus();}
+  document.querySelectorAll('.photo-link').forEach(function(b){
+    b.addEventListener('click',function(){lf=b;
+      if(b.classList.contains('photo-missing')){window.open(b.dataset.source,'_blank','noopener');return;}
+      open(b.dataset.full,b.dataset.name+' 場地照片',b.dataset.source);});});
+  document.querySelector('.lb-close').addEventListener('click',close);
+  lb.addEventListener('click',function(e){if(e.target===lb)close();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!lb.hidden)close();});
+})();
+</script>
+</body></html>
