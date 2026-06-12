@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ICOPE 說明會｜講師可配合日期排序</title>
+<style>
+  :root{
+    --bg:#F6F7F5; --card:#FFFFFF; --ink:#1F2937; --muted:#6B7280;
+    --line:#E5E7EB; --teal:#0F766E; --teal-soft:#E6F2F0; --teal-ink:#0B5A53;
+    --danger:#B91C1C; --danger-soft:#FCEBEA; --ok:#047857;
+    --shadow:0 1px 2px rgba(16,24,40,.04),0 8px 24px rgba(16,24,40,.06);
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,-apple-system,sans-serif;
+    line-height:1.6; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:560px; margin:0 auto; padding:24px 16px 56px;}
+  .card{background:var(--card); border:1px solid var(--line); border-radius:16px; box-shadow:var(--shadow); overflow:hidden;}
+  .head{padding:22px 22px 18px; border-bottom:1px solid var(--line);}
+  .eyebrow{font-size:12px; letter-spacing:.14em; color:var(--teal); font-weight:700; text-transform:uppercase;}
+  h1{margin:6px 0 4px; font-size:20px; font-weight:800; letter-spacing:-.01em;}
+  .sub{margin:0; color:var(--muted); font-size:14px;}
+  .body{padding:20px 22px 8px;}
+  .field{margin-bottom:16px;}
+  label.lbl{display:block; font-size:14px; font-weight:600; margin-bottom:6px;}
+  .req{color:var(--danger); font-weight:700;}
+  input[type=text],input[type=email]{
+    width:100%; padding:11px 12px; font-size:16px; color:var(--ink);
+    border:1px solid var(--line); border-radius:10px; background:#fff; outline:none;
+  }
+  input:focus,select:focus{border-color:var(--teal); box-shadow:0 0 0 3px var(--teal-soft);}
+  .hint{font-size:13px; color:var(--muted); margin:4px 2px 0;}
+
+  .ranks{margin:6px 0 4px; border:1px solid var(--line); border-radius:12px; overflow:hidden;}
+  .row{display:flex; align-items:center; gap:12px; padding:12px 14px; border-top:1px solid var(--line);}
+  .row:first-child{border-top:none;}
+  .row .date{flex:1; min-width:0;}
+  .row .d-main{font-weight:700; font-size:15px;}
+  .row .d-meta{font-size:13px; color:var(--muted);}
+  select{
+    flex:0 0 128px; padding:10px 10px; font-size:16px; border:1px solid var(--line);
+    border-radius:10px; background:#fff; color:var(--ink); cursor:pointer; appearance:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%236B7280' stroke-width='2.4'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat:no-repeat; background-position:right 10px center; padding-right:30px;
+  }
+  select.is-na{color:var(--danger); border-color:#F3C9C6; background-color:var(--danger-soft);}
+
+  .summary{margin:14px 2px 2px; font-size:14px; color:var(--teal-ink); background:var(--teal-soft);
+    border-radius:10px; padding:10px 12px; display:none;}
+  .summary b{font-weight:800;}
+
+  .extra-field{margin-top:6px; padding-top:14px; border-top:1px dashed var(--line);}
+  .extra-row{display:flex; gap:8px; align-items:center; margin-bottom:8px;}
+  .extra-row input{flex:1; padding:10px 12px; font-size:15px; border:1px solid var(--line); border-radius:10px;}
+  .extra-row .rm{flex:0 0 38px; height:40px; border:1px solid var(--line); background:#fff; border-radius:10px;
+    color:var(--muted); font-size:18px; line-height:1; cursor:pointer;}
+  .extra-row .rm:hover{color:var(--danger); border-color:#F3C9C6;}
+  .addbtn{margin-top:2px; padding:9px 14px; font-size:14px; font-weight:700; color:var(--teal-ink);
+    background:var(--teal-soft); border:1px solid #CDE6E2; border-radius:10px; cursor:pointer;}
+  .addbtn:hover{filter:brightness(.98);}
+  .err{display:none; margin:10px 2px 0; font-size:13.5px; color:var(--danger);
+    background:var(--danger-soft); border-radius:10px; padding:9px 12px;}
+
+  .foot{padding:6px 22px 24px;}
+  button.submit{
+    width:100%; padding:14px; font-size:16px; font-weight:800; color:#fff; cursor:pointer;
+    background:var(--teal); border:none; border-radius:12px; transition:filter .15s, transform .02s;
+  }
+  button.submit:hover{filter:brightness(1.05);}
+  button.submit:active{transform:translateY(1px);}
+  button.submit:disabled{background:#9CA3AF; cursor:not-allowed; filter:none;}
+  .deadline{text-align:center; font-size:13.5px; color:var(--teal-ink); font-weight:600; margin:12px 0 0;}
+  .contact{text-align:center; font-size:12.5px; color:var(--muted); line-height:1.7; margin:10px 4px 0;}
+  .contact a{color:var(--teal); text-decoration:none;}
+
+  /* success */
+  .done{display:none; padding:34px 22px 40px; text-align:center;}
+  .done .tick{width:56px; height:56px; border-radius:50%; background:var(--teal-soft); color:var(--ok);
+    display:flex; align-items:center; justify-content:center; margin:0 auto 14px; font-size:30px;}
+  .done h2{margin:0 0 6px; font-size:19px;}
+  .done p{margin:0; color:var(--muted); font-size:14px;}
+  .done .recap{margin-top:16px; text-align:left; display:inline-block; font-size:14px;}
+
+  @media (max-width:768px){
+    .wrap{padding:16px 12px 48px;}
+    .row{gap:10px; padding:12px;}
+    select{flex-basis:118px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <!-- FORM -->
+    <div id="form">
+      <div class="head">
+        <div class="eyebrow">ICOPE 醫院診所說明會</div>
+        <h1>講師可配合日期排序</h1>
+        <p class="sub">長庚科技大學．國民健康署委託計畫</p>
+      </div>
+
+      <div class="body">
+        <div class="field">
+          <label class="lbl" for="name">姓名 <span class="req">*</span></label>
+          <input type="text" id="name" placeholder="例：鍾孟修" autocomplete="name">
+        </div>
+        <div class="field">
+          <label class="lbl" for="email">Email <span class="req">*</span></label>
+          <input type="email" id="email" placeholder="例：name@example.com（確認信會寄到這裡）" autocomplete="email">
+        </div>
+
+        <div class="field" style="margin-bottom:8px">
+          <label class="lbl">日期排序 <span class="req">*</span></label>
+          <p class="hint" style="margin-top:0">請從下拉選單填入優先順序，<b>1 為最優先</b>；同一個數字不能重複。完全不能配合的日期請選「不可」。</p>
+        </div>
+
+        <div class="ranks" id="ranks"><!-- rows injected by JS --></div>
+
+        <div class="field extra-field">
+          <label class="lbl">其他可配合時段（選填）</label>
+          <p class="hint" style="margin-top:0">若以上日期都不理想，或您另有更方便的時段，可在此自行補充（可多筆）。</p>
+          <div id="extras"></div>
+          <button type="button" class="addbtn" id="addExtra">＋ 新增時段</button>
+        </div>
+
+        <div class="summary" id="summary"></div>
+        <div class="err" id="err"></div>
+      </div>
+
+      <div class="foot">
+        <button class="submit" id="submit">送出排序</button>
+        <p class="deadline" id="deadline"></p>
+        <p class="contact" id="contact"></p>
+      </div>
+    </div>
+
+    <!-- SUCCESS -->
+    <div class="done" id="done">
+      <div class="tick">✓</div>
+      <h2>已收到您的排序</h2>
+      <p>確認信已寄到您與承辦人信箱；後續場地與議程確認後將再與您聯繫。</p>
+      <div class="recap" id="recap"></div>
+      <p class="contact" id="contactDone" style="margin-top:18px"></p>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   設定區：只要改這裡就好
+   ============================================================ */
+const CONFIG = {
+  // 部署你的 Google Apps Script 後，把 /exec 結尾的網址貼進來。
+  // 接上後端後：送出會自動寫進試算表，並自動寄確認信給填表人與承辦人。
+  // ※ 此網址為必填；未填時送出會提示先連結後端。
+  GAS_URL: 'https://script.google.com/a/macros/mail.cgust.edu.tw/s/AKfycbzePIybM2kIFswkUeYrGAw3KCdJ52unOPvrLKwAXffop3D0EqZZT-zQ1yGUBaZHHHs1/exec',
+
+  // 收件信箱（備援寄信用）
+  ADMIN_EMAIL: 'pfhsu@mail.cgust.edu.tw',
+
+  // 截止日（顯示用，可改）
+  DEADLINE: '請於 6/15（一）上午 10 時前回覆',
+
+  // 聯絡資訊（顯示於表單下方與完成頁）
+  CONTACT: '如有疑問，請與計畫助理許碧芬（<a href="mailto:pfhsu@mail.cgust.edu.tw">pfhsu@mail.cgust.edu.tw</a> ／ (03)211-8999 #5165）聯繫。',
+
+  // 候選日期：可自由增減、改時段
+  DATES: [
+    { id:'7/16', label:'7/16（四）', meta:'下午 12:30–16:00' },
+    { id:'7/22', label:'7/22（三）', meta:'上午 9:00–12:30' },
+    { id:'7/28', label:'7/28（二）', meta:'下午 12:30–16:00' },
+    { id:'7/30', label:'7/30（四）', meta:'下午 12:30–16:00' },
+  ]
+};
+
+/* ============================================================ */
+const $ = s => document.querySelector(s);
+const ranksEl = $('#ranks');
+const N = CONFIG.DATES.length;
+
+// 建立每個日期的下拉列
+CONFIG.DATES.forEach((d, i) => {
+  const row = document.createElement('div');
+  row.className = 'row';
+  let opts = '<option value="">請選擇</option>';
+  for (let n = 1; n <= N; n++) opts += `<option value="${n}">${n}${n===1?' 最優先':''}</option>`;
+  opts += '<option value="X">不可</option>';
+  row.innerHTML =
+    `<div class="date"><div class="d-main">${d.label}</div><div class="d-meta">${d.meta}</div></div>
+     <select data-idx="${i}" aria-label="${d.label} 排序">${opts}</select>`;
+  ranksEl.appendChild(row);
+});
+
+$('#deadline').textContent = CONFIG.DEADLINE;
+$('#contact').innerHTML = CONFIG.CONTACT;
+$('#contactDone').innerHTML = CONFIG.CONTACT;
+const selects = [...document.querySelectorAll('select')];
+
+// 即時防呆：選過的數字在其他列變灰、即時摘要
+function refresh(){
+  const used = selects.map(s => s.value);
+  selects.forEach(sel => {
+    sel.classList.toggle('is-na', sel.value === 'X');
+    [...sel.options].forEach(o => {
+      if (o.value === '' || o.value === 'X') return;
+      const takenElsewhere = used.some((v, j) => v === o.value && selects[j] !== sel);
+      o.disabled = takenElsewhere;
+    });
+  });
+  // 摘要
+  const ranked = CONFIG.DATES
+    .map((d,i) => ({ d, v: selects[i].value }))
+    .filter(x => x.v && x.v !== 'X')
+    .sort((a,b) => +a.v - +b.v);
+  const na = CONFIG.DATES.filter((d,i) => selects[i].value === 'X').map(d => d.label);
+  const sum = $('#summary');
+  if (ranked.length || na.length){
+    let html = '';
+    if (ranked.length) html += '您的排序：' + ranked.map(x => `<b>${x.v}</b>→${x.d.label}`).join('、');
+    if (na.length) html += (html?'　｜　':'') + '不可：' + na.join('、');
+    sum.innerHTML = html; sum.style.display = 'block';
+  } else sum.style.display = 'none';
+  $('#err').style.display = 'none';
+}
+selects.forEach(s => s.addEventListener('change', refresh));
+
+// 其他可配合時段：可新增 / 刪除多筆
+const extrasEl = $('#extras');
+function addExtra(val){
+  const row = document.createElement('div');
+  row.className = 'extra-row';
+  row.innerHTML =
+    `<input type="text" placeholder="例：7/24（五）下午 12:30–16:00">
+     <button type="button" class="rm" aria-label="刪除這筆">×</button>`;
+  row.querySelector('.rm').addEventListener('click', ()=>{ row.remove(); });
+  if (val) row.querySelector('input').value = val;
+  extrasEl.appendChild(row);
+  row.querySelector('input').focus();
+}
+$('#addExtra').addEventListener('click', ()=> addExtra());
+function getExtras(){
+  return [...extrasEl.querySelectorAll('input')].map(i=>i.value.trim()).filter(Boolean);
+}
+
+function validate(){
+  const name = $('#name').value.trim();
+  const email = $('#email').value.trim();
+  if (!name) return '請填寫姓名。';
+  if (!email) return '請填寫 Email，送出後系統會寄一份確認信給您。';
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return 'Email 格式有誤，請再確認。';
+  const picked = selects.filter(s => s.value !== '');
+  if (picked.length < N) return '請為每個日期選擇排序或「不可」。';
+  const nums = selects.map(s=>s.value).filter(v => v !== 'X');
+  if (new Set(nums).size !== nums.length) return '排序數字不可重複，請重新確認。';
+  if (nums.length === 0 && getExtras().length === 0)
+    return '四個日期皆不可時，請於「其他可配合時段」至少補充一個您方便的時間。';
+  return '';
+}
+
+function payload(){
+  const data = { 姓名:$('#name').value.trim(), Email:$('#email').value.trim(), 填表時間:new Date().toLocaleString('zh-TW') };
+  CONFIG.DATES.forEach((d,i)=>{ data[d.id] = selects[i].value === 'X' ? '不可' : selects[i].value; });
+  data['其他可配合時段'] = getExtras().join('；');
+  return data;
+}
+
+function showDone(p){
+  $('#form').style.display = 'none';
+  const ranked = CONFIG.DATES.map(d=>({d, v:p[d.id]})).filter(x=>x.v && x.v!=='不可').sort((a,b)=>+a.v-+b.v);
+  const na = CONFIG.DATES.filter(d=>p[d.id]==='不可').map(d=>d.label);
+  let recap = ranked.map(x=>`${x.v}. ${x.d.label}`).join('<br>');
+  if (na.length) recap += `<br><span style="color:var(--danger)">不可：${na.join('、')}</span>`;
+  if (p['其他可配合時段']) recap += `<br>其他時段：${p['其他可配合時段'].replace(/；/g,'、')}`;
+  $('#recap').innerHTML = recap;
+  $('#done').style.display = 'block';
+}
+
+function showErr(m){ const e=$('#err'); e.textContent=m; e.style.display='block'; e.scrollIntoView({behavior:'smooth', block:'center'}); }
+
+$('#submit').addEventListener('click', async () => {
+  const msg = validate();
+  if (msg){ showErr(msg); return; }
+  if (!CONFIG.GAS_URL){
+    showErr('尚未連結後端：請先在程式最上方 CONFIG.GAS_URL 貼上 Apps Script 的 /exec 網址。');
+    return;
+  }
+  const p = payload();
+  const btn = $('#submit');
+  btn.disabled = true; btn.textContent = '送出中…';
+  try{
+    await fetch(CONFIG.GAS_URL, {
+      method:'POST', mode:'no-cors',
+      headers:{'Content-Type':'text/plain;charset=utf-8'},
+      body: JSON.stringify(p)
+    });
+    showDone(p);
+  }catch(err){
+    btn.disabled=false; btn.textContent='送出排序';
+    showErr('送出失敗，請確認網路連線後，再按一次「送出排序」。');
+  }
+});
+
+refresh();
+</script>
+</body>
+</html>
