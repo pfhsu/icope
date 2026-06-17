@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ICOPE 說明會｜東部場 講師可配合時間</title>
+<style>
+  :root{
+    --bg:#F6F7F5; --card:#FFFFFF; --ink:#1F2937; --muted:#6B7280;
+    --line:#E5E7EB; --teal:#0F766E; --teal-soft:#E6F2F0; --teal-ink:#0B5A53;
+    --danger:#B91C1C; --danger-soft:#FCEBEA; --ok:#047857;
+    --shadow:0 1px 2px rgba(16,24,40,.04),0 8px 24px rgba(16,24,40,.06);
+  }
+  *{box-sizing:border-box}
+  body{margin:0; background:var(--bg); color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,-apple-system,sans-serif;
+    line-height:1.6; -webkit-font-smoothing:antialiased;}
+  .wrap{max-width:560px; margin:0 auto; padding:24px 16px 56px;}
+  .card{background:var(--card); border:1px solid var(--line); border-radius:16px; box-shadow:var(--shadow); overflow:hidden;}
+  .head{padding:22px 22px 18px; border-bottom:1px solid var(--line);}
+  .logos{display:flex; align-items:center; gap:16px; margin-bottom:16px; flex-wrap:wrap;}
+  .logos .logo{height:44px; width:auto; max-width:180px; object-fit:contain;}
+  .eyebrow{font-size:12px; letter-spacing:.14em; color:var(--teal); font-weight:700;}
+  h1{margin:6px 0 4px; font-size:20px; font-weight:800; letter-spacing:-.01em;}
+  .sub{margin:0; color:var(--muted); font-size:14px;}
+  .body{padding:20px 22px 8px;}
+
+  .session{display:flex; gap:10px; align-items:flex-start; padding:12px 14px; margin-bottom:18px;
+    background:var(--teal-soft); border:1px solid #CDE6E2; border-radius:11px;}
+  .session .t{font-weight:800; color:var(--teal-ink); font-size:15px;}
+  .session .m{font-size:13px; color:var(--teal-ink); opacity:.85;}
+
+  .field{margin-bottom:18px;}
+  label.lbl{display:block; font-size:14px; font-weight:700; margin-bottom:6px;}
+  .req{color:var(--danger); font-weight:700;}
+  input[type=text],input[type=email]{width:100%; padding:11px 12px; font-size:16px; color:var(--ink);
+    border:1px solid var(--line); border-radius:10px; background:#fff; outline:none;}
+  input:focus{border-color:var(--teal); box-shadow:0 0 0 3px var(--teal-soft);}
+  .hint{font-size:13px; color:var(--muted); margin:4px 2px 8px;}
+
+  .legend{font-size:13px; color:var(--muted); margin:0 2px 10px;}
+  .legend b{color:var(--teal-ink);}
+  .note-red{color:var(--danger); font-weight:700; display:inline-block; margin-top:4px;}
+  .chips{display:flex; flex-wrap:wrap; gap:8px;}
+  .chip{padding:11px 12px; min-width:96px; text-align:center; border:1px solid var(--line);
+    border-radius:11px; background:#fff; cursor:pointer; font-size:15px; font-weight:700; color:var(--ink); transition:.12s;}
+  .chip:hover{border-color:#CDE6E2;}
+  .chip.on{background:var(--teal); color:#fff; border-color:var(--teal);}
+
+  .extra-field{margin-top:6px; padding-top:14px; border-top:1px dashed var(--line);}
+  .extra-row{display:flex; gap:8px; align-items:center; margin-bottom:8px;}
+  .extra-row input{flex:1;}
+  .extra-row .rm{flex:0 0 38px; height:42px; border:1px solid var(--line); background:#fff; border-radius:10px;
+    color:var(--muted); font-size:18px; cursor:pointer;}
+  .extra-row .rm:hover{color:var(--danger); border-color:#F3C9C6;}
+  .addbtn{margin-top:2px; padding:9px 14px; font-size:14px; font-weight:700; color:var(--teal-ink);
+    background:var(--teal-soft); border:1px solid #CDE6E2; border-radius:10px; cursor:pointer;}
+
+  .err{display:none; margin:6px 2px 0; font-size:13.5px; color:var(--danger);
+    background:var(--danger-soft); border-radius:10px; padding:9px 12px;}
+  .foot{padding:6px 22px 24px;}
+  button.submit{width:100%; padding:14px; font-size:16px; font-weight:800; color:#fff; cursor:pointer;
+    background:var(--teal); border:none; border-radius:12px;}
+  button.submit:hover{filter:brightness(1.05);}
+  button.submit:disabled{background:#9CA3AF; cursor:not-allowed;}
+  .deadline{text-align:center; font-size:13.5px; color:var(--teal-ink); font-weight:600; margin:12px 0 0;}
+  .contact{text-align:center; font-size:12.5px; color:var(--muted); line-height:1.7; margin:10px 4px 0;}
+  .contact a{color:var(--teal); text-decoration:none;}
+
+  .done{display:none; padding:34px 22px 40px; text-align:center;}
+  .done .tick{width:56px; height:56px; border-radius:50%; background:var(--teal-soft); color:var(--ok);
+    display:flex; align-items:center; justify-content:center; margin:0 auto 14px; font-size:30px;}
+  .done h2{margin:0 0 6px; font-size:19px;}
+  .done p{margin:0; color:var(--muted); font-size:14px;}
+  .done .recap{margin-top:16px; text-align:left; display:inline-block; font-size:14px; line-height:1.9;}
+
+  @media (max-width:768px){
+    .wrap{padding:16px 12px 48px;}
+    .chip{flex:1 1 calc(50% - 8px); min-width:0;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <div id="form">
+      <div class="head">
+        <div class="logos">
+          <img class="logo" src="https://www.hpa.gov.tw/NewPageStyle/TW/images/logo/logo.png" alt="衛生福利部國民健康署" onerror="this.style.display='none'">
+          <img class="logo" src="https://lis.cgust.edu.tw/var/file/19/1019/pictures/419/m/mczh-tw700x700_large23726_466522136590.jpg" alt="長庚科技大學" onerror="this.style.display='none'">
+        </div>
+        <div class="eyebrow">ICOPE 醫院診所說明會</div>
+        <h1>東部場 講師可配合時間</h1>
+        <p class="sub">長庚科技大學．國民健康署委託計畫</p>
+      </div>
+
+      <div class="body">
+        <div class="session">
+          <span style="font-size:18px">📍</span>
+          <div>
+            <div class="t">本場次：東部場</div>
+            <div class="m">12:30–14:00　實體合併線上同步</div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="lbl" for="name">姓名 <span class="req">*</span></label>
+          <input type="text" id="name" placeholder="請輸入您的姓名" autocomplete="name">
+        </div>
+
+        <div class="field">
+          <label class="lbl" for="email">Email <span class="req">*</span></label>
+          <input type="email" id="email" placeholder="例：name@example.com（確認信會寄到這裡）">
+        </div>
+
+        <div class="field">
+          <label class="lbl">可配合的日期 <span class="req">*</span></label>
+          <p class="legend">請點選您可以配合的日期，<b>選取＝可（變綠）</b>，未選＝不可。<br><span class="note-red">為利後續安排，懇請盡量多勾選可配合的日期（越多越好），謝謝！</span></p>
+          <div class="chips" id="chips"></div>
+        </div>
+
+        <div class="field extra-field">
+          <label class="lbl">其他可配合時段（選填）</label>
+          <p class="hint" style="margin-top:0">若以上日期都不理想，或您另有更方便的時段，可在此補充（可多筆）。</p>
+          <div id="extras"></div>
+          <button type="button" class="addbtn" id="addExtra">＋ 新增時段</button>
+        </div>
+
+        <div class="err" id="err"></div>
+      </div>
+
+      <div class="foot">
+        <button class="submit" id="submit">送出</button>
+        <p class="deadline" id="deadline"></p>
+        <p class="contact" id="contact"></p>
+      </div>
+    </div>
+
+    <div class="done" id="done">
+      <div class="tick">✓</div>
+      <h2>已收到您的回覆</h2>
+      <p>確認信已寄到您與承辦人信箱；後續場地與時間確認後將再與您聯繫。</p>
+      <div class="recap" id="recap"></div>
+      <p class="contact" id="contactDone" style="margin-top:18px"></p>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   設定區：改這裡即可
+   ============================================================ */
+const CONFIG = {
+  // 寫入試算表（沿用同一支合併版網域後端，資料寫進「委員回覆」分頁）
+  GAS_URL: 'https://script.google.com/a/macros/mail.cgust.edu.tw/s/AKfycbzePIybM2kIFswkUeYrGAw3KCdJ52unOPvrLKwAXffop3D0EqZZT-zQ1yGUBaZHHHs1/exec',
+  // 寄信（沿用舊的、已驗證可寄信的後端）
+  MAIL_GAS_URL: 'https://script.google.com/macros/s/AKfycbyP0Gi56UMynjALv2MlP769WFLCpSAmzkqKk04gG4GXAxSg2CIE206wKQSyqlpY_zBfjw/exec',
+
+  ADMIN_EMAIL: 'pfhsu@mail.cgust.edu.tw',
+  DEADLINE: '請於 6/20（五）前回覆',   // ← 截止日請自行修改
+  CONTACT: '如有疑問，請與計畫助理許碧芬（<a href="mailto:pfhsu@mail.cgust.edu.tw">pfhsu@mail.cgust.edu.tw</a> ／ (03)211-8999 #5165）聯繫。',
+
+  REGION: '東部場',   // 固定場次
+  DATES: ['7/29（三）','7/30（四）','7/31（五）'],
+};
+/* ============================================================ */
+
+const $ = s => document.querySelector(s);
+
+// 日期（多選方塊）
+const chipsEl = $('#chips');
+CONFIG.DATES.forEach(d=>{
+  const b = document.createElement('button');
+  b.type='button'; b.className='chip'; b.textContent=d;
+  b.addEventListener('click', ()=> b.classList.toggle('on'));
+  chipsEl.appendChild(b);
+});
+function getDates(){ return [...chipsEl.querySelectorAll('.chip.on')].map(b=>b.textContent); }
+
+// 其他時段
+const extrasEl = $('#extras');
+function addExtra(){
+  const row = document.createElement('div');
+  row.className='extra-row';
+  row.innerHTML = `<input type="text" placeholder="例：8/4（二）下午"><button type="button" class="rm" aria-label="刪除">×</button>`;
+  row.querySelector('.rm').addEventListener('click', ()=> row.remove());
+  extrasEl.appendChild(row);
+  row.querySelector('input').focus();
+}
+$('#addExtra').addEventListener('click', addExtra);
+function getExtras(){ return [...extrasEl.querySelectorAll('input')].map(i=>i.value.trim()).filter(Boolean); }
+
+$('#deadline').textContent = CONFIG.DEADLINE;
+$('#contact').innerHTML = CONFIG.CONTACT;
+$('#contactDone').innerHTML = CONFIG.CONTACT;
+
+function showErr(m){ const e=$('#err'); e.textContent=m; e.style.display='block'; e.scrollIntoView({behavior:'smooth', block:'center'}); }
+
+function validate(){
+  if (!$('#name').value.trim()) return '請填寫姓名。';
+  const email = $('#email').value.trim();
+  if (!email) return '請填寫 Email，送出後系統會寄一份確認信給您。';
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return 'Email 格式有誤，請再確認。';
+  if (getDates().length === 0 && getExtras().length === 0)
+    return '請至少點選一個可配合日期，或於「其他可配合時段」補充一個時間。';
+  return '';
+}
+
+function payload(){
+  return {
+    formType: 'committee',
+    填表時間: new Date().toLocaleString('zh-TW'),
+    姓名: $('#name').value.trim(),
+    Email: $('#email').value.trim(),
+    願意場次: CONFIG.REGION,
+    可配合日期: getDates().join('、'),
+    其他可配合時段: getExtras().join('；'),
+  };
+}
+
+function mailPayload(p){
+  const parts = ['場次：' + CONFIG.REGION];
+  if (p.可配合日期) parts.push('可配合日期：' + p.可配合日期);
+  return {
+    userName: p.姓名,
+    userEmail: p.Email,
+    adminEmail: CONFIG.ADMIN_EMAIL,
+    title: 'ICOPE 說明會 東部場 講師可配合時間調查',
+    dateList: parts.join('｜'),
+    dateCount: String(getDates().length),
+    noteSection: p.其他可配合時段 ? ('其他可配合時段：' + p.其他可配合時段.replace(/；/g,'、')) : '',
+  };
+}
+
+function showDone(p){
+  $('#form').style.display='none';
+  let r = `姓名：${p.姓名}<br>場次：${CONFIG.REGION}<br>可配合日期：${p.可配合日期 || '（未選）'}`;
+  if (p.其他可配合時段) r += `<br>其他時段：${p.其他可配合時段.replace(/；/g,'、')}`;
+  $('#recap').innerHTML = r;
+  $('#done').style.display='block';
+}
+
+$('#submit').addEventListener('click', async ()=>{
+  const msg = validate();
+  if (msg){ showErr(msg); return; }
+  const p = payload();
+  const btn = $('#submit');
+  btn.disabled=true; btn.textContent='送出中…';
+
+  const tasks = [];
+  if (CONFIG.GAS_URL) tasks.push(fetch(CONFIG.GAS_URL, {
+    method:'POST', mode:'no-cors', headers:{'Content-Type':'text/plain;charset=utf-8'}, body: JSON.stringify(p)
+  }));
+  if (CONFIG.MAIL_GAS_URL) tasks.push(fetch(CONFIG.MAIL_GAS_URL, {
+    method:'POST', mode:'no-cors', headers:{'Content-Type':'application/json'}, body: JSON.stringify(mailPayload(p))
+  }));
+
+  try{
+    await Promise.all(tasks);
+    showDone(p);
+  }catch(err){
+    btn.disabled=false; btn.textContent='送出';
+    showErr('送出失敗，請確認網路連線後，再按一次「送出」。');
+  }
+});
+</script>
+</body>
+</html>
