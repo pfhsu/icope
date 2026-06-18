@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ICOPE 說明會｜講師時間與日期決策</title>
+<style>
+  :root{--bg:#F6F7F5;--card:#fff;--ink:#1F2937;--muted:#6B7280;--line:#E5E7EB;
+    --teal:#0F766E;--teal-soft:#E6F2F0;--teal-ink:#0B5A53;--amber:#B45309;--amber-soft:#FEF3E2;--ok:#047857;
+    --blue:#1D4ED8;--blue-s:#E5EDFB;--green:#047857;--green-s:#E3F3EC;--orange:#B45309;--orange-s:#FBEEDD;--purple:#6D28D9;--purple-s:#EFE9FB;--danger:#B91C1C;
+    --shadow:0 1px 2px rgba(16,24,40,.04),0 8px 24px rgba(16,24,40,.06);}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;line-height:1.65;}
+  .wrap{max-width:860px;margin:0 auto;padding:24px 16px 140px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);overflow:hidden;}
+  .head{padding:24px 24px 18px;border-bottom:1px solid var(--line);}
+  .logos{display:flex;align-items:center;gap:16px;margin-bottom:14px;flex-wrap:wrap;}
+  .logos img{height:44px;width:auto;max-width:180px;object-fit:contain;}
+  .eyebrow{font-size:12px;letter-spacing:.14em;color:var(--teal);font-weight:700;}
+  h1{margin:6px 0 4px;font-size:22px;font-weight:800;}
+  .sub{margin:0;color:var(--muted);font-size:14px;}
+
+  .tabs{display:flex;gap:6px;padding:14px 24px 0;border-bottom:1px solid var(--line);}
+  .tab{padding:11px 18px;font-size:15px;font-weight:800;border:none;background:none;color:var(--muted);
+    cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-1px;}
+  .tab.active{color:var(--teal-ink);border-bottom-color:var(--teal);}
+
+  .body{padding:20px 24px 8px;}
+  h2{font-size:14px;font-weight:800;color:var(--teal-ink);margin:0 0 8px;}
+  .section{margin-bottom:22px;}
+
+  .zhong{background:var(--teal-soft);border:1px solid #CDE6E2;border-radius:12px;padding:12px 14px;margin-bottom:20px;font-size:13.5px;color:var(--teal-ink);}
+  .zhong .r{margin:3px 0;} .zhong b{font-weight:800;}
+
+  .scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:12px;}
+  table.grid{border-collapse:collapse;width:100%;min-width:720px;font-size:13.5px;}
+  .grid th,.grid td{padding:8px 10px;border-bottom:1px solid var(--line);border-right:1px solid var(--line);text-align:center;white-space:nowrap;}
+  .grid th{background:#FBFCFB;font-weight:800;position:sticky;top:0;}
+  .grid td:first-child,.grid th:first-child{text-align:left;font-weight:700;}
+  .grid td.note,.grid th.note{text-align:left;white-space:normal;min-width:170px;color:var(--muted);font-size:12px;}
+  .grid tr.none td{background:#FAFAFA;color:#9CA3AF;}
+  .o{color:var(--teal-ink);font-weight:800;} .am{color:var(--amber);font-weight:800;font-size:12px;}
+  .ask{color:var(--purple);font-weight:700;font-size:12px;} .dash{color:#C4C7CC;}
+  .chip{display:inline-block;font-size:12px;font-weight:800;border-radius:7px;padding:2px 7px;margin:1px;}
+  .c-北{background:var(--blue-s);color:var(--blue);} .c-南{background:var(--green-s);color:var(--green);}
+  .c-中{background:var(--orange-s);color:var(--orange);} .c-東{background:var(--purple-s);color:var(--purple);}
+
+  .fix{margin-top:18px;background:var(--amber-soft);border:1px solid #F4D8AE;border-radius:12px;padding:14px 16px;}
+  .fix .t{font-weight:800;color:var(--amber);margin-bottom:6px;} .fix ul{margin:0;padding-left:18px;} .fix li{font-size:13px;margin:4px 0;}
+  .gobtn{margin-top:18px;width:100%;padding:14px;font-size:16px;font-weight:800;color:#fff;background:var(--teal);border:none;border-radius:12px;cursor:pointer;}
+
+  .tools{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;align-items:center;}
+  .tools .lbl{font-size:13px;color:var(--muted);font-weight:700;}
+  .tbtn{padding:9px 13px;font-size:13.5px;font-weight:700;border-radius:10px;cursor:pointer;background:var(--teal-soft);color:var(--teal-ink);border:1px solid #CDE6E2;}
+  .tbtn.ghost{background:#fff;color:var(--muted);border-color:var(--line);}
+  .ses{border:1px solid var(--line);border-radius:13px;padding:15px 16px;margin-bottom:14px;}
+  .sttl{font-weight:800;font-size:16px;} .sttl .m{font-weight:500;font-size:12.5px;color:var(--muted);display:block;margin-top:2px;}
+  select{width:100%;margin-top:10px;padding:12px;font-size:16px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink);cursor:pointer;appearance:none;padding-right:32px;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%236B7280' stroke-width='2.4'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 11px center;}
+  select:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px var(--teal-soft);}
+  .detail{margin-top:11px;font-size:13.5px;display:none;background:#FBFCFB;border:1px solid var(--line);border-radius:10px;padding:11px 13px;}
+  .detail .ln{display:flex;gap:7px;align-items:flex-start;margin:3px 0;} .detail .mk{flex:0 0 auto;}
+  .detail .who{color:var(--teal-ink);font-weight:700;} .detail .pro{color:var(--ok);} .detail .con{color:var(--amber);}
+  .summary{margin-top:6px;border:1px solid var(--line);border-radius:13px;overflow:hidden;}
+  .summary .row{display:flex;justify-content:space-between;padding:10px 16px;font-size:14.5px;border-bottom:1px solid var(--line);}
+  .summary .row .k{color:var(--muted);} .summary .row .v{font-weight:800;} .summary .row .v.empty{color:var(--muted);font-weight:600;}
+  .verdict{padding:12px 16px;font-size:14px;font-weight:700;} .verdict.warn{background:var(--amber-soft);color:var(--amber);}
+  .verdict ul{margin:6px 0 0;padding-left:18px;font-weight:600;} .verdict li{margin:2px 0;}
+  .note{margin-top:14px;font-size:12.5px;color:var(--muted);background:var(--amber-soft);border:1px solid #F4D8AE;border-radius:10px;padding:10px 13px;} .note b{color:var(--amber);}
+  .contact{font-size:12.5px;color:var(--muted);margin:14px 0 4px;text-align:center;line-height:1.7;} .contact a{color:var(--teal);text-decoration:none;}
+
+  .bar{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--line);box-shadow:0 -6px 20px rgba(16,24,40,.06);padding:12px 16px;z-index:10;display:none;}
+  .bar .in{max-width:860px;margin:0 auto;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+  .bar .cur{font-weight:800;font-size:14.5px;flex:1;min-width:180px;} .bar .cur span{color:var(--teal-ink);}
+  .bar input{padding:10px 12px;font-size:15px;border:1px solid var(--line);border-radius:10px;width:140px;}
+  .bar button{padding:11px 18px;font-size:15px;font-weight:800;color:#fff;background:var(--teal);border:none;border-radius:10px;cursor:pointer;}
+  .bar button:disabled{background:#9CA3AF;cursor:not-allowed;} .okmsg{display:none;color:var(--ok);font-weight:800;font-size:14px;}
+  @media (max-width:600px){ .bar .cur{flex-basis:100%;} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <div class="head">
+      <div class="logos">
+        <img src="https://www.hpa.gov.tw/NewPageStyle/TW/images/logo/logo.png" alt="國民健康署" onerror="this.style.display='none'">
+        <img src="https://lis.cgust.edu.tw/var/file/19/1019/pictures/419/m/mczh-tw700x700_large23726_466522136590.jpg" alt="長庚科技大學" onerror="this.style.display='none'">
+      </div>
+      <div class="eyebrow">ICOPE 醫院診所說明會</div>
+      <h1>講師時間與四場日期決策</h1>
+      <p class="sub">先檢視講師可行時間，再進入日期決策。東部待彭醫師回覆。</p>
+    </div>
+
+    <div class="tabs">
+      <button class="tab active" data-tab="ref">① 講師時間</button>
+      <button class="tab" data-tab="dec">② 日期決策</button>
+    </div>
+
+    <!-- ===== TAB 1：講師時間 ===== -->
+    <div class="body" id="view-ref">
+      <div class="zhong">
+        <h2 style="color:var(--teal-ink)">鍾孟修可配合時間（北、南兩場關鍵）</h2>
+        <div class="r"><b>7/17、7/24、7/28、7/31</b>　下午 12:30–16:00，<b>南、北皆可</b></div>
+        <div class="r"><b>7/21</b>　下午，<b>僅限雙北 → 只能北部</b></div>
+        <div class="r"><b>7/27</b>　<b>上午 9:00–12:30</b>、<b>僅限雙北 → 只能北部、且為上午</b></div>
+      </div>
+
+      <h2>各日可成立場次</h2>
+      <div class="scroll">
+      <table class="grid">
+        <thead><tr>
+          <th>日期</th><th>北部<br>鍾孟修</th><th>南部<br>鍾孟修</th>
+          <th>吳桂花<br>(北)</th><th>李純瑩<br>(南)</th><th>黃興舒<br>(中)</th><th>彭鈺婷<br>(東)</th>
+          <th>可選場次</th><th class="note">備註</th>
+        </tr></thead>
+        <tbody id="tb"></tbody>
+      </table>
+      </div>
+
+      <div class="fix">
+        <div class="t">與最初統整表相較，已更正 3 處</div>
+        <ul>
+          <li><b>7/24（五）</b>：可選＝<b>北部</b>（鍾孟修下午可、吳桂花可；南部因李純瑩當日無空不成立）。</li>
+          <li><b>7/30（四）</b>：可選＝<b>中部、東部</b>（黃興舒可、中部不需鍾孟修）。</li>
+          <li><b>7/27（一）</b>：南部鍾孟修＝<b>留空</b>（當日僅上午且僅限雙北，不能南部）。</li>
+        </ul>
+      </div>
+      <div class="fix" style="background:var(--teal-soft);border-color:#CDE6E2;">
+        <div class="t" style="color:var(--teal-ink)">已對齊</div>
+        <ul><li>東部問卷已更新為 <b>7/28、7/29、7/30、7/31</b>，與本表一致。</li></ul>
+      </div>
+      <div class="fix" style="background:#fff;border-color:var(--line);">
+        <div class="t" style="color:var(--ink)">仍待確認</div>
+        <ul><li><b>7/27 是否算數</b>：鍾孟修當日僅上午，北部議程原訂下午須改上午，並須再確認吳桂花上午可行；若「國健署週一不行」仍成立，7/27 整天應排除。</li></ul>
+      </div>
+
+      <button class="gobtn" id="goDec">進入日期決策 →</button>
+    </div>
+
+    <!-- ===== TAB 2：日期決策 ===== -->
+    <div class="body" id="view-dec" style="display:none">
+      <div class="tools">
+        <span class="lbl">快速套用：</span>
+        <button class="tbtn" data-combo="0">建議1（貼近原訂場地）</button>
+        <button class="tbtn" data-combo="1">建議2（國健署可出席最多）</button>
+        <button class="tbtn" data-combo="2">建議3（均衡）</button>
+        <button class="tbtn ghost" id="reset">清除</button>
+      </div>
+      <div class="note" style="background:#EEF4FB;border-color:#C9DCF3;color:#1D4ED8;margin:0 0 14px;">
+        <b style="color:#1D4ED8;">國健署可出席時段：</b>7/24 早上、7/27 早上、7/28 早上、7/30 整天（最好下午）、7/31 整天；偏好中、南、東部場。<b style="color:var(--danger);">7/21 下午待確認是否可排。</b>
+      </div>
+      <div id="sessions"></div>
+      <div class="summary" id="summary"></div>
+      <div class="note"><b>場地提醒：</b>東部花蓮文創園區場地已備；北、中、南三場原預訂時段因講師時間無法配合，皆需重訂。鎖定日期後請承辦確認各場地於該日有空檔。</div>
+      <p class="contact" id="contact"></p>
+    </div>
+  </div>
+</div>
+
+<div class="bar" id="bar">
+  <div class="in">
+    <span class="cur" id="cur">尚未選擇</span>
+    <input type="text" id="who" placeholder="決策人姓名">
+    <input type="email" id="whoEmail" placeholder="決策人 Email">
+    <button id="report" disabled>回報決定</button>
+    <span class="okmsg" id="ok">✓ 已回報</span>
+  </div>
+</div>
+
+<script>
+const $ = s => document.querySelector(s);
+
+/* ---------- TAB 1 資料：每日可成立場次 ---------- */
+const O='<span class="o">O</span>', AM='<span class="am">上午</span>', ASK='<span class="ask">徵詢中</span>', D='<span class="dash">—</span>';
+const chips = arr => arr.length ? arr.map(c=>`<span class="chip c-${c}">${c}</span>`).join('') : '<span class="dash">無</span>';
+const ROWS = [
+  {d:'7/17（五）',bz:O,nz:O,wu:O,li:O,hu:D,pen:D,ok:['北','南'],note:''},
+  {d:'7/20（一）',bz:D,nz:D,wu:D,li:D,hu:D,pen:D,ok:[],note:'週一',none:true},
+  {d:'7/21（二）',bz:O,nz:D,wu:O,li:O,hu:O,pen:D,ok:['北','中'],note:'鍾孟修當日僅限雙北，南部不成立'},
+  {d:'7/22（三）',bz:D,nz:D,wu:O,li:D,hu:D,pen:D,ok:[],note:'缺鍾孟修，北部不成立',none:true},
+  {d:'7/23（四）',bz:D,nz:D,wu:D,li:D,hu:D,pen:D,ok:[],note:'',none:true},
+  {d:'7/24（五）',bz:O,nz:O,wu:O,li:D,hu:D,pen:D,ok:['北'],note:'南部因李純瑩當日無空不成立'},
+  {d:'7/27（一）',bz:AM,nz:D,wu:O,li:D,hu:O,pen:D,ok:['北','中'],note:'鍾孟修僅上午且限雙北；北部議程須改上午、確認吳桂花；留意週一'},
+  {d:'7/28（二）',bz:O,nz:O,wu:O,li:D,hu:O,pen:ASK,ok:['北','中','東'],note:'南部因李純瑩當日無空不成立；東部花蓮場地原訂此日'},
+  {d:'7/29（三）',bz:D,nz:D,wu:D,li:D,hu:D,pen:ASK,ok:['東'],note:''},
+  {d:'7/30（四）',bz:D,nz:D,wu:D,li:O,hu:O,pen:ASK,ok:['中','東'],note:'南部缺鍾孟修不成立'},
+  {d:'7/31（五）',bz:O,nz:O,wu:O,li:O,hu:D,pen:ASK,ok:['北','南','東'],note:''},
+];
+$('#tb').innerHTML = ROWS.map(r=>
+  `<tr class="${r.none?'none':''}"><td>${r.d}</td><td>${r.bz}</td><td>${r.nz}</td><td>${r.wu}</td><td>${r.li}</td><td>${r.hu}</td><td>${r.pen}</td><td>${chips(r.ok)}</td><td class="note">${r.note||''}</td></tr>`
+).join('');
+
+/* ---------- TAB 切換 ---------- */
+function showTab(name){
+  document.querySelectorAll('.tab').forEach(t=> t.classList.toggle('active', t.dataset.tab===name));
+  $('#view-ref').style.display = name==='ref' ? 'block':'none';
+  $('#view-dec').style.display = name==='dec' ? 'block':'none';
+  $('#bar').style.display = name==='dec' ? 'block':'none';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+document.querySelectorAll('.tab').forEach(t=> t.addEventListener('click', ()=>showTab(t.dataset.tab)));
+$('#goDec').addEventListener('click', ()=>showTab('dec'));
+
+/* ---------- TAB 2 資料：決策 ---------- */
+const CONFIG = {
+  MAIL_GAS_URL: 'https://script.google.com/macros/s/AKfycbyP0Gi56UMynjALv2MlP769WFLCpSAmzkqKk04gG4GXAxSg2CIE206wKQSyqlpY_zBfjw/exec',
+  ADMIN_EMAIL: 'pfhsu@mail.cgust.edu.tw',
+  CONTACT: '承辦：計畫助理許碧芬（<a href="mailto:pfhsu@mail.cgust.edu.tw">pfhsu@mail.cgust.edu.tw</a> ／ (03)211-8999 #5165）',
+  COMBOS: [
+    { '北部':'7/24（五）', '中部':'7/30（四）', '南部':'7/17（五）', '東部':'7/28（二）' },
+    { '北部':'7/27（一）｜上午', '中部':'7/30（四）', '南部':'7/31（五）', '東部':'7/29（三）' },
+    { '北部':'7/21（二）', '中部':'7/28（二）', '南部':'7/31（五）', '東部':'7/30（四）' },
+  ],
+  GOV: {
+    '北部|7/27（一）':'可出席（上午）',
+    '北部|7/31（五）':'可出席（非其偏好場次）',
+    '南部|7/31（五）':'可出席且偏好',
+    '中部|7/30（四）':'可出席且偏好（最好下午）',
+    '東部|7/30（四）':'可出席且偏好',
+    '東部|7/31（五）':'可出席且偏好',
+  },
+  SESSIONS: [
+    { key:'北部', title:'北部場', meta:'鍾孟修＋吳桂花 · 下午 12:30–16:00（7/27 為上午 9:00–12:30）', venue:'場地需重訂',
+      opts:[
+        {date:'7/17（五）',who:'鍾孟修、吳桂花',pro:[],con:['佔掉南部關鍵日（南部將只剩 7/31）']},
+        {date:'7/21（二）',who:'鍾孟修、吳桂花',pro:['鍾孟修此日僅能北部，正好','不佔南部關鍵日'],con:['與中部競爭 7/21']},
+        {date:'7/24（五）',who:'鍾孟修、吳桂花',pro:['不佔南部關鍵日'],con:[]},
+        {date:'7/27（一）',slot:'上午',who:'鍾孟修、吳桂花',pro:[],con:['鍾孟修此日僅上午、僅雙北','議程原訂下午須改上午、確認吳桂花','留意國健署週一是否排除']},
+        {date:'7/28（二）',who:'鍾孟修、吳桂花',pro:[],con:['與中部競爭 7/28']},
+        {date:'7/31（五）',who:'鍾孟修、吳桂花',pro:[],con:['佔掉南部關鍵日','與東部競爭 7/31']},
+      ]},
+    { key:'南部', title:'南部場', meta:'鍾孟修＋李純瑩 · 下午 12:30–16:00（僅兩天可選）', venue:'場地需重訂',
+      opts:[
+        {date:'7/17（五）',who:'鍾孟修、李純瑩',pro:['把 7/31 留給北部或東部'],con:[]},
+        {date:'7/31（五）',who:'鍾孟修、李純瑩',pro:[],con:['北部、東部也想用 7/31，須協調']},
+      ]},
+    { key:'中部', title:'中部場', meta:'黃興舒 · 12:30–14:00（實體＋線上）', venue:'場地需重訂',
+      opts:[
+        {date:'7/21（二）',who:'黃興舒',pro:[],con:['與北部競爭 7/21']},
+        {date:'7/27（一）',who:'黃興舒',pro:[],con:['留意國健署週一是否排除','與北部同一天則不可']},
+        {date:'7/28（二）',who:'黃興舒',pro:[],con:['與北部競爭 7/28']},
+        {date:'7/30（四）',who:'黃興舒',pro:[],con:['與東部競爭 7/30']},
+      ]},
+    { key:'東部', title:'東部場', meta:'彭鈺婷（徵詢中）· 12:30–14:00（實體＋線上）', venue:'花蓮文創園區（已備）',
+      opts:[
+        {date:'7/28（二）',who:'彭鈺婷（徵詢中）',pro:['東部花蓮場地原訂此日'],con:['與北、中競爭 7/28','待彭醫師回覆']},
+        {date:'7/29（三）',who:'彭鈺婷（徵詢中）',pro:['完全不與其他場次衝突'],con:['待彭醫師回覆']},
+        {date:'7/30（四）',who:'彭鈺婷（徵詢中）',pro:['不佔南部關鍵日'],con:['與中部競爭 7/30','待彭醫師回覆']},
+        {date:'7/31（五）',who:'彭鈺婷（徵詢中）',pro:[],con:['與南部、北部競爭 7/31','待彭醫師回覆']},
+      ]},
+  ],
+};
+
+const wrap = $('#sessions');
+const sel = {};
+const optVal = o => o.slot ? (o.date+'｜'+o.slot) : o.date;
+const dateOf = v => v ? v.split('｜')[0] : '';
+
+CONFIG.SESSIONS.forEach(s=>{
+  const box=document.createElement('div'); box.className='ses';
+  let opts='<option value="">— 請選擇日期 —</option>';
+  s.opts.forEach(o=>{ const g=CONFIG.GOV[s.key+'|'+o.date]; const gt = g ? (g.includes('偏好')?'　·　國健署偏好':'　·　國健署可') : ''; opts += `<option value="${optVal(o)}">${o.date}${o.slot?'　'+o.slot:''}${gt}</option>`; });
+  box.innerHTML=`<div class="sttl">${s.title}<span class="m">${s.meta}</span></div><select id="sel-${s.key}">${opts}</select><div class="detail" id="det-${s.key}"></div>`;
+  wrap.appendChild(box);
+  const se=box.querySelector('select'); sel[s.key]=se; se.addEventListener('change',refresh);
+});
+const findOpt = s => s.opts.find(o=> optVal(o)===sel[s.key].value);
+function renderDetail(s){
+  const det=$('#det-'+s.key); const o=findOpt(s);
+  if(!o){ det.style.display='none'; det.innerHTML=''; return; }
+  let h=`<div class="ln who"><span class="mk">🎙️</span><span>講師：${o.who}</span></div>`;
+  h+=`<div class="ln venue"><span class="mk">📍</span><span>場地：${s.venue}</span></div>`;
+  const g=CONFIG.GOV[s.key+'|'+o.date];
+  h+=`<div class="ln" style="color:#1D4ED8;font-weight:700"><span class="mk">🏛️</span><span>國健署：${g||'當日無對應時段，恐無法出席'}</span></div>`;
+  (o.pro||[]).forEach(p=> h+=`<div class="ln pro"><span class="mk">✓</span><span>${p}</span></div>`);
+  (o.con||[]).forEach(c=> h+=`<div class="ln con"><span class="mk">⚠</span><span>${c}</span></div>`);
+  det.innerHTML=h; det.style.display='block';
+}
+function refresh(){
+  const chosen={}; CONFIG.SESSIONS.forEach(s=> chosen[s.key]=sel[s.key].value);
+  CONFIG.SESSIONS.forEach(s=>{
+    const others=CONFIG.SESSIONS.filter(x=>x.key!==s.key).map(x=>dateOf(chosen[x.key])).filter(Boolean);
+    [...sel[s.key].options].forEach(op=>{ if(op.value) op.disabled=others.includes(dateOf(op.value)); });
+    renderDetail(s);
+  });
+  let rows=''; CONFIG.SESSIONS.forEach(s=>{ const v=chosen[s.key];
+    rows+=`<div class="row"><span class="k">${s.title}</span><span class="v ${v?'':'empty'}">${v?v.replace('｜','　'):'未選'}</span></div>`; });
+  const filled=CONFIG.SESSIONS.filter(s=>chosen[s.key]).length;
+  const warns=[];
+  if(chosen['東部']) warns.push('東部日期待彭醫師回覆確認');
+  if(dateOf(chosen['北部'])==='7/27（一）') warns.push('北部 7/27 須改上午、確認吳桂花，並留意國健署週一');
+  warns.push('北、中、南三場場地皆需重訂');
+  let verdict = filled<4
+    ? `<div class="verdict warn">尚未選齊四場（已選 ${filled}／4）。</div>`
+    : `<div class="verdict warn">四場已選定、皆為不同日 ✓　待辦／確認事項：<ul>${warns.map(w=>`<li>${w}</li>`).join('')}</ul></div>`;
+  $('#summary').innerHTML=rows+verdict;
+  const cur=CONFIG.SESSIONS.map(s=> `${s.title.replace('場','')} ${chosen[s.key]?chosen[s.key].replace('｜',''):'—'}`).join('／');
+  $('#cur').innerHTML = filled?`目前：<span>${cur}</span>`:'尚未選擇';
+  $('#report').disabled = filled<4; $('#ok').style.display='none';
+}
+document.querySelectorAll('[data-combo]').forEach(b=> b.addEventListener('click', ()=>{
+  const combo=CONFIG.COMBOS[+b.dataset.combo];
+  CONFIG.SESSIONS.forEach(s=> sel[s.key].value=''); refresh();
+  CONFIG.SESSIONS.forEach(s=> sel[s.key].value=combo[s.key]||''); refresh();
+}));
+$('#reset').addEventListener('click', ()=>{ CONFIG.SESSIONS.forEach(s=> sel[s.key].value=''); refresh(); });
+$('#contact').innerHTML=CONFIG.CONTACT;
+$('#report').addEventListener('click', async ()=>{
+  const chosen={}; CONFIG.SESSIONS.forEach(s=> chosen[s.key]=sel[s.key].value);
+  if(CONFIG.SESSIONS.filter(s=>chosen[s.key]).length<4) return;
+  const who=$('#who').value.trim(); const email=$('#whoEmail').value.trim(); const btn=$('#report'); btn.disabled=true; btn.textContent='回報中…';
+  const dateList=`北部 ${chosen['北部'].replace('｜','')}、中部 ${chosen['中部']}、南部 ${chosen['南部']}、東部 ${chosen['東部']}`;
+  const body={userName:who||'ICOPE 日期決策',userEmail:email||CONFIG.ADMIN_EMAIL,adminEmail:CONFIG.ADMIN_EMAIL,
+    title:'ICOPE 說明會 四場日期決策結果',dateList:dateList,dateCount:'4',
+    noteSection:'東部待彭醫師回覆；北中南場地需重訂'+(who?('　決策人：'+who):'')};
+  try{ await fetch(CONFIG.MAIL_GAS_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+    btn.textContent='回報決定'; $('#ok').style.display='inline';
+  }catch(err){ btn.disabled=false; btn.textContent='回報失敗，再試一次'; }
+});
+refresh();
+</script>
+</body>
+</html>
