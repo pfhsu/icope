@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ICOPE 說明會｜場地決策</title>
+<style>
+  :root{--bg:#F6F7F5;--card:#fff;--ink:#1F2937;--muted:#6B7280;--line:#E5E7EB;
+    --teal:#0F766E;--teal-soft:#E6F2F0;--teal-ink:#0B5A53;--amber:#B45309;--amber-soft:#FEF3E2;--ok:#047857;
+    --shadow:0 1px 2px rgba(16,24,40,.04),0 8px 24px rgba(16,24,40,.06);}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;line-height:1.65;}
+  .wrap{max-width:760px;margin:0 auto;padding:24px 16px 140px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);overflow:hidden;}
+  .head{padding:24px 24px 20px;border-bottom:1px solid var(--line);}
+  .logos{display:flex;align-items:center;gap:16px;margin-bottom:16px;flex-wrap:wrap;}
+  .logos img{height:44px;width:auto;max-width:180px;object-fit:contain;}
+  .eyebrow{font-size:12px;letter-spacing:.14em;color:var(--teal);font-weight:700;}
+  h1{margin:6px 0 4px;font-size:22px;font-weight:800;}
+  .sub{margin:0;color:var(--muted);font-size:14px;}
+  .body{padding:18px 24px 8px;}
+
+  .ses{border:1px solid var(--line);border-radius:13px;padding:15px 16px;margin-bottom:14px;}
+  .sttl{font-weight:800;font-size:16px;}
+  .sttl .m{font-weight:500;font-size:12.5px;color:var(--muted);display:block;margin-top:2px;}
+  select{width:100%;margin-top:10px;padding:12px;font-size:16px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink);cursor:pointer;appearance:none;padding-right:32px;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%236B7280' stroke-width='2.4'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 11px center;}
+  select:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px var(--teal-soft);}
+  .detail{margin-top:11px;font-size:13.5px;display:none;background:#FBFCFB;border:1px solid var(--line);border-radius:10px;padding:11px 13px;}
+  .detail .ln{display:flex;gap:7px;align-items:flex-start;margin:3px 0;} .detail .mk{flex:0 0 auto;color:var(--muted);}
+  .detail .pro{color:var(--ok);} .detail .con{color:var(--amber);}
+  .detail .links{margin-top:8px;display:flex;gap:8px;flex-wrap:wrap;}
+  .detail .links a{font-size:12.5px;font-weight:700;color:var(--teal-ink);background:var(--teal-soft);border:1px solid #CDE6E2;border-radius:8px;padding:5px 10px;text-decoration:none;}
+
+  .fixed{border:1px solid #CDE6E2;background:var(--teal-soft);}
+  .fixed .badge{display:inline-block;font-size:11px;font-weight:800;color:#fff;background:var(--teal);border-radius:999px;padding:2px 9px;margin-left:6px;}
+
+  .summary{margin-top:6px;border:1px solid var(--line);border-radius:13px;overflow:hidden;}
+  .summary .row{display:flex;justify-content:space-between;gap:12px;padding:10px 16px;font-size:14.5px;border-bottom:1px solid var(--line);}
+  .summary .row:last-of-type{border-bottom:none;}
+  .summary .row .k{color:var(--muted);white-space:nowrap;} .summary .row .v{font-weight:800;text-align:right;} .summary .row .v.empty{color:var(--muted);font-weight:600;}
+  .contact{font-size:12.5px;color:var(--muted);margin:16px 0 4px;text-align:center;line-height:1.7;} .contact a{color:var(--teal);text-decoration:none;}
+
+  .bar{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--line);box-shadow:0 -6px 20px rgba(16,24,40,.06);padding:12px 16px;z-index:10;}
+  .bar .in{max-width:760px;margin:0 auto;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+  .bar .cur{font-weight:800;font-size:14px;flex:1;min-width:180px;} .bar .cur span{color:var(--teal-ink);}
+  .bar input{padding:10px 12px;font-size:15px;border:1px solid var(--line);border-radius:10px;width:130px;}
+  .bar button{padding:11px 18px;font-size:15px;font-weight:800;color:#fff;background:var(--teal);border:none;border-radius:10px;cursor:pointer;}
+  .bar button:disabled{background:#9CA3AF;cursor:not-allowed;} .okmsg{display:none;color:var(--ok);font-weight:800;font-size:14px;}
+  @media (max-width:600px){ .bar .cur{flex-basis:100%;} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <div class="head">
+      <div class="logos">
+        <img src="https://www.hpa.gov.tw/NewPageStyle/TW/images/logo/logo.png" alt="國民健康署" onerror="this.style.display='none'">
+        <img src="https://lis.cgust.edu.tw/var/file/19/1019/pictures/625/part_20739_3583868_36765.jpg" alt="長庚科技大學" onerror="this.style.display='none'">
+      </div>
+      <div class="eyebrow">ICOPE 醫院診所說明會</div>
+      <h1>四場場地決策</h1>
+      <p class="sub">日期已定（北 7/24、東 7/28、中 7/30、南 7/31）。東部花蓮已確定，北、中、南三場請就候選場地擇一。</p>
+    </div>
+
+    <div class="body">
+      <div style="background:var(--teal-soft);border:1px solid #CDE6E2;border-radius:12px;padding:13px 15px;margin-bottom:18px;font-size:13.5px;color:var(--teal-ink);line-height:1.75;">
+        <div style="font-weight:800;margin-bottom:4px;">使用說明</div>
+        1. 北、中、南三場各點下拉<b>選擇場地</b>；選定後會展開該場地的座位、費用、交通與優缺點，並附「<b>官網</b>」「<b>現場照片</b>」連結可進一步查看分析資料與照片。<br>
+        2. 東部花蓮已確定，直接顯示、無需選擇。<br>
+        3. 三場都選好後，於最下方填「決策人姓名、Email」，按「<b>回報決定</b>」即送出（正本給填表人、副本給承辦）。
+      </div>
+      <div id="sessions"></div>
+      <div class="summary" id="summary"></div>
+      <p class="contact" id="contact"></p>
+    </div>
+  </div>
+</div>
+
+<div class="bar">
+  <div class="in">
+    <span class="cur" id="cur">尚未選擇</span>
+    <input type="text" id="who" placeholder="決策人姓名">
+    <input type="email" id="whoEmail" placeholder="決策人 Email">
+    <button id="report" disabled>回報決定</button>
+    <span class="okmsg" id="ok">✓ 已回報</span>
+  </div>
+</div>
+
+<script>
+const $ = s => document.querySelector(s);
+const CONFIG = {
+  MAIL_GAS_URL:'https://script.google.com/macros/s/AKfycbyP0Gi56UMynjALv2MlP769WFLCpSAmzkqKk04gG4GXAxSg2CIE206wKQSyqlpY_zBfjw/exec',
+  ADMIN_EMAIL:'pfhsu@mail.cgust.edu.tw',
+  CONTACT:'承辦：計畫助理許碧芬（<a href="mailto:pfhsu@mail.cgust.edu.tw">pfhsu@mail.cgust.edu.tw</a> ／ (03)211-8999 #5165）',
+  SESSIONS:[
+    { key:'北部', title:'北部場', meta:'7/24（五）上午 · 實體（含實作）· 雙北', opts:[
+      {name:'臺大醫學院國際會議中心（公館）', seat:'教室型 90／劇院型 120', price:'11,000／時段', traffic:'捷運公館站',
+        pro:['高級、服務好','可配合訂餐'], con:['費用偏高'],
+        url:'https://www.meeting.com.tw/ntu/', photo:'https://www.meeting.com.tw/ntu/images/lease/locke-slider-01.jpg'},
+      {name:'臺師大 進修推廣學院演講堂', rec:true, seat:'148', price:'9,980／時段', traffic:'捷運古亭站',
+        pro:['費用較低','設備完整、交通便利'], con:[],
+        url:'https://www.sce.ntnu.edu.tw/home/space/', photo:'https://www.sce.ntnu.edu.tw/home/src/img/space/tw/1/20240304200042.jpg'},
+    ]},
+    { key:'中部', title:'中部場', meta:'7/30（四）下午 · 實體合併線上同步（無實作）', opts:[
+      {name:'臺中科技大學 H201 多媒體會議室', rec:true, seat:'130', price:'8,500／時段', traffic:'臺中火車站計程車約 15 分',
+        pro:['費用較低','可移動座位、彈性高'], con:[], url:'https://garms.nutc.edu.tw/VenueRental/VRPlace?_p=4', photo:'https://garms.nutc.edu.tw/_pl_map/_PIC/11.jpg'},
+      {name:'東海大學 求真廳', seat:'劇院型 112／教室型 84', price:'9,000', traffic:'臺中市區（非站體旁）',
+        pro:['階梯教室'], con:['交通不如高鐵站','固定座位（中部無實作影響小）'], url:'https://space.thu.edu.tw/detail/BS/BS109/2026/24/', photo:'https://fsis.thu.edu.tw/mosi/projects/spaces/1024/BS/BS109-1-1024.jpg'},
+    ]},
+    { key:'南部', title:'南部場', meta:'7/31（五）下午 · 實體（含實作）· 高雄 · 費用待報價', opts:[
+      {name:'國軍左營總醫院', seat:'約 100（待院方確認）', price:'待報價', traffic:'高鐵左營站約 11 分',
+        pro:['距車站最近'], con:['軍方醫院、須發函','程序較繁瑣、資訊較少'], url:'', photo:''},
+      {name:'TCCC 高雄信義館', seat:'教室型 72／講座型 100', price:'待報價', traffic:'橘線信義國小站步行 3 分',
+        pro:['捷運可達'], con:[], url:'https://www.tpqc.com.tw/', photo:'https://www.tpqc.com.tw/wp-content/uploads/2026/03/K132K133%E6%95%99%E5%AE%A4-2-1030x773.png'},
+      {name:'國立高雄大學 圖資大樓遠距教室', rec:true, seat:'146', price:'待報價', traffic:'高鐵左營站約 20 分',
+        pro:['容量充足、階梯適合說明會','程序單純'], con:['距車站較遠'], url:'https://ga.nuk.edu.tw/p/412-1010-512.php?Lang=zh-tw', photo:'https://ga.nuk.edu.tw/var/file/10/1010/pictures/143/m/mczh-tw1000x1000_large10601_647165651388.jpg'},
+    ]},
+  ],
+  EAST:{ key:'東部', title:'東部場', meta:'7/28（二）下午 · 實體合併線上同步（無實作）',
+    name:'花蓮文化創意產業園區', seat:'—', price:'8,000／場次＋水電 2,000／天', traffic:'花蓮車站步行約 20–30 分，搭車約 10 分鐘',
+    con:['申請流程較多、計費方式較複雜，承辦作業時留意即可'], note:'可借日期含 7/28，地址已確定。',
+    url:'https://www.taiwan.net.tw/m1.aspx?sNo=0001016&id=A12-00295', photo:'https://img.ltn.com.tw/Upload/art/page/800/2026/06/06/5462511_1.jpg'},
+};
+
+const wrap = $('#sessions');
+const sel = {};
+
+CONFIG.SESSIONS.forEach(s=>{
+  const box=document.createElement('div'); box.className='ses';
+  let opts='<option value="">— 請選擇場地 —</option>';
+  s.opts.forEach((o,i)=> opts+=`<option value="${i}">${o.name}${o.rec?'　★承辦建議':''}</option>`);
+  box.innerHTML=`<div class="sttl">${s.title}<span class="m">${s.meta}</span></div><select id="sel-${s.key}">${opts}</select><div class="detail" id="det-${s.key}"></div>`;
+  wrap.appendChild(box);
+  const se=box.querySelector('select'); sel[s.key]=se; se.addEventListener('change',refresh);
+});
+
+// 東部固定卡
+const ebox=document.createElement('div'); ebox.className='ses fixed';
+ebox.innerHTML=`<div class="sttl">${CONFIG.EAST.title}<span class="badge">已確定</span><span class="m">${CONFIG.EAST.meta}</span></div>
+  <div class="detail" style="display:block;background:#fff;">
+    <div class="ln"><span class="mk">🏛️</span><span><b>${CONFIG.EAST.name}</b></span></div>
+    <div class="ln"><span class="mk">💰</span><span>${CONFIG.EAST.price}</span></div>
+    <div class="ln"><span class="mk">🚇</span><span>${CONFIG.EAST.traffic}</span></div>
+    ${CONFIG.EAST.con.map(c=>`<div class="ln" style="color:var(--muted)"><span class="mk">📝</span><span>${c}</span></div>`).join('')}
+    <div class="ln" style="color:var(--teal-ink);font-weight:700"><span class="mk">✓</span><span>${CONFIG.EAST.note}</span></div>
+    <div class="links"><a href="${CONFIG.EAST.url}" target="_blank">官網</a><a href="${CONFIG.EAST.photo}" target="_blank">查看照片</a></div>
+  </div>`;
+wrap.appendChild(ebox);
+
+function renderDetail(s){
+  const det=$('#det-'+s.key); const v=sel[s.key].value;
+  if(v===''){ det.style.display='none'; det.innerHTML=''; return; }
+  const o=s.opts[+v];
+  let h='';
+  if(o.rec) h+=`<div class="ln" style="color:var(--ok);font-weight:800"><span class="mk">★</span><span>承辦建議場地</span></div>`;
+  h+=`<div class="ln"><span class="mk">🪑</span><span>座位：${o.seat}</span></div>`;
+  h+=`<div class="ln"><span class="mk">💰</span><span>費用：${o.price}</span></div>`;
+  h+=`<div class="ln"><span class="mk">🚇</span><span>交通：${o.traffic}</span></div>`;
+  (o.pro||[]).forEach(p=> h+=`<div class="ln pro"><span class="mk">✓</span><span>${p}</span></div>`);
+  (o.con||[]).forEach(c=> h+=`<div class="ln con"><span class="mk">⚠</span><span>${c}</span></div>`);
+  let links=''; if(o.url) links+=`<a href="${o.url}" target="_blank">官網</a>`; if(o.photo) links+=`<a href="${o.photo}" target="_blank">查看照片</a>`;
+  if(links) h+=`<div class="links">${links}</div>`;
+  det.innerHTML=h; det.style.display='block';
+}
+
+function refresh(){
+  let rows='';
+  CONFIG.SESSIONS.forEach(s=>{ renderDetail(s);
+    const v=sel[s.key].value; const name=v===''?'未選':s.opts[+v].name;
+    rows+=`<div class="row"><span class="k">${s.title}（${s.meta.split(' · ')[0]}）</span><span class="v ${v===''?'empty':''}">${name}</span></div>`;
+  });
+  rows+=`<div class="row"><span class="k">東部場（7/28）</span><span class="v">${CONFIG.EAST.name}（已確定）</span></div>`;
+  $('#summary').innerHTML=rows;
+  const filled=CONFIG.SESSIONS.filter(s=>sel[s.key].value!=='').length;
+  const cur=CONFIG.SESSIONS.map(s=>{ const v=sel[s.key].value; return `${s.key.replace('部','')} ${v===''?'—':s.opts[+v].name}`; }).join('／');
+  $('#cur').innerHTML = filled?`目前：<span>${cur}／東 花蓮</span>`:'尚未選擇';
+  $('#report').disabled = filled<3;
+  $('#ok').style.display='none';
+}
+
+$('#contact').innerHTML=CONFIG.CONTACT;
+
+$('#report').addEventListener('click', async ()=>{
+  if(CONFIG.SESSIONS.filter(s=>sel[s.key].value!=='').length<3) return;
+  const who=$('#who').value.trim(); const email=$('#whoEmail').value.trim();
+  const btn=$('#report'); btn.disabled=true; btn.textContent='回報中…';
+  const picks=CONFIG.SESSIONS.map(s=>`${s.title} ${s.opts[+sel[s.key].value].name}`).join('、');
+  const dateList=picks+`、東部場 ${CONFIG.EAST.name}（已確定）`;
+  const body={userName:who||'ICOPE 場地決策',userEmail:email||CONFIG.ADMIN_EMAIL,adminEmail:CONFIG.ADMIN_EMAIL,
+    title:'ICOPE 說明會 場地決策結果',dateList:dateList,dateCount:'4',
+    noteSection:'日期：北7/24、東7/28、中7/30、南7/31'+(who?('　決策人：'+who):'')};
+  try{ await fetch(CONFIG.MAIL_GAS_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+    btn.textContent='回報決定'; $('#ok').style.display='inline';
+  }catch(err){ btn.disabled=false; btn.textContent='回報失敗，再試一次'; }
+});
+
+refresh();
+</script>
+</body>
+</html>
